@@ -1,0 +1,92 @@
+.e-trust {
+	padding-top: 4rem;
+	padding-bottom: 0rem;
+}
+
+.e-trust__head {
+  text-align: center;
+}
+
+.e-trust__subtitle {
+  margin-top: 0.5rem;
+  color: var(--text-muted);
+}
+
+/* === MARQUEE === */
+.e-trust__marquee{
+  position: relative;
+  overflow: hidden;
+  margin-top: 2.5rem;
+  padding-block: 1rem;
+
+  /* fade (mask) */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 56px,
+    #000 calc(100% - 56px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 56px,
+    #000 calc(100% - 56px),
+    transparent 100%
+  );
+}
+
+.e-trust__track{
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: eTrustScroll 28s linear infinite;
+}
+
+/* IMPORTANT: pas de gap sur track -> anti “saut” */
+.e-trust__group{
+  display: flex;
+  align-items: center;
+  gap: 3rem; /* gap ici uniquement */
+  padding-left: 3rem;
+}
+
+.e-trust__logo{
+  display: grid;
+  place-items: center;
+  min-width: 120px;
+  height: 44px;
+}
+
+.e-trust__logo img{
+  height: 34px;
+  width: auto;
+  filter: grayscale(100%);
+  opacity: 0.9;
+}
+
+/* pause au hover (optionnel) */
+.e-trust__marquee:hover .e-trust__track{
+  animation-play-state: paused;
+}
+
+/* animation: on déplace d'une largeur de group (= la moitié du track) */
+@keyframes eTrustScroll{
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.e-trust__logo.is-large img {
+  height: 65px;
+  padding-top: 0;
+  margin-top: 0;
+  transform: translateY(-20%);
+}
+
+@media(min-width:1024px){
+
+	.e-trust{
+		padding-top: 7rem;
+		padding-bottom:0rem;
+	}
+}
+

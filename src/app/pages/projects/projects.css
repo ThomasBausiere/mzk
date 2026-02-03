@@ -1,0 +1,108 @@
+.projects-page{
+  padding-top: 4rem;
+	padding-bottom: 0;
+}
+
+/* header */
+.projects-page__head{
+  width: min(900px, calc(100% - 2rem));
+  margin: 0 auto;
+  text-align: center;
+}
+
+.projects-page__title{
+  color: var(--accent);
+  font-size: 2.4rem;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+@media (min-width: 1024px){
+  .projects-page__title{ font-size: 3.25rem; }
+    .projects-page__filters{display: flex;}
+}
+
+.projects-page__subtitle{
+  margin-top: 0.9rem;
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* filters */
+.projects-page__filters{
+  width: min(980px, calc(100% - 2rem));
+  margin: 2.2rem auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+  display: none;
+}
+
+.projects-page__chip{
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  padding: 0.55rem 1.25rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.projects-page__chip.is-active{
+  background: rgba(231,184,90,0.95);
+  color: #ffffff;
+  box-shadow: var(--shadow-light);
+}
+
+.projects-page__chip:focus-visible{
+  outline: 2px solid rgba(231,184,90,0.85);
+  outline-offset: 3px;
+}
+
+/* grid */
+.projects-grid{
+  width: min(1100px, calc(100% - 2rem));
+  margin: 2.5rem auto 0;
+
+  display: grid;
+  gap: 2.25rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 900px){
+  .projects-grid{
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.75rem;
+  }
+  .projects-page{
+    		padding-top: 7rem;
+		padding-bottom:0;
+  }
+}
+
+.project-card{
+  display: block;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-light);
+  background: rgba(0,0,0,0.04);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.project-card:hover{
+  transform: translateY(-3px);
+}
+
+.project-card__img{
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 1 / 1; /* comme les vignettes carrées maquette */
+  object-fit: cover;
+}
+@media (min-width: 1024px){
+    .projects-page__filters{display: flex;}
+}

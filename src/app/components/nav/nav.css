@@ -1,0 +1,337 @@
+.nav-shell {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding-top: var(--space-6);
+}
+
+.nav {
+  display: none; /* mobile: cachée selon capture */
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(240, 197, 107, 0.35);
+  box-shadow: 0 18px 60px rgba(0,0,0,0.35);
+}
+
+@media (min-width: var(--bp-lg)) {
+  .nav { display: flex; }
+  
+}
+
+.nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-full);
+  background: rgba(240, 197, 107, 0.22);
+  border: 1px solid rgba(240, 197, 107, 0.55);
+  display: grid;
+  place-items: center;
+  color: var(--main-solid-color);
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* gap: var(--space-6); */
+}
+
+.nav__link {
+  color: rgba(255, 255, 255, 0.86);
+  transition: color 160ms ease;
+}
+
+.nav__link:hover { color: var(--high-contast-text); }
+
+
+
+/* NAV OVERLAY : ne pousse pas le layout, flotte au-dessus */
+.nav-shell {
+  position: fixed;
+  top: 5px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  pointer-events: none;
+  padding-top: 0;
+}
+
+/* Pill */
+.nav {
+  pointer-events: auto;
+  margin: 0 auto;
+
+  /* ✅ mobile : pill quasi full width, plus de "vide" */
+  width: min(680px, calc(100% - 1.25rem));
+  padding: 0.35rem 0.5rem;
+
+  display: flex;                 /* ✅ plus simple que grid pour mobile */
+  align-items: center;
+  justify-content: space-between;/* ✅ logo gauche / burger droite */
+  gap: 0.75rem;
+
+  border-radius: 999px;
+  background: rgba(200, 200, 200, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.20);
+
+}
+
+/* Logo rond doré */
+.nav__brand { 
+   display: inline-flex;
+  align-items: center;
+    flex: 0 0 auto;
+
+}
+
+.nav__logo-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: block;
+  object-fit: contain;
+}
+
+.nav__logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+
+  color: #fff;
+  background: var(--accent);
+}
+
+/* Liens */
+.nav__links {
+  display: none; 
+  align-items: center;
+  justify-content: space-around;
+  gap: 4rem;
+  justify-self: center;
+
+}
+
+.nav__link {
+  color: rgba(0, 0, 0, 0.75);
+  text-decoration: none;
+}
+
+/* CTA */
+.nav__cta {
+  justify-self: end;
+  height: 38px;
+  padding: 0 1.1rem;
+  display: none; 
+  white-space: nowrap;
+}
+
+/* Burger (mobile) */
+.nav__burger {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+
+  position: relative; /* ✅ IMPORTANT pour les lignes */
+}
+
+.nav__burger-lines {
+  position: relative;
+  width: 18px;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.62);
+  display: block;
+}
+
+.nav__burger-lines::before,
+.nav__burger-lines::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 2px;
+  background: rgba(0,0,0,0.62);
+}
+.nav__burger-lines::before { top: -6px; }
+.nav__burger-lines::after  { top:  6px; }
+
+/* Desktop : liens + CTA visibles, burger caché */
+@media (min-width: 1024px) {
+  .nav__links { display: flex; }
+  .nav__cta { display: inline-flex; }
+  .nav__burger { display: none; }
+  .nav-shell{padding-top: 2rem;}
+}
+
+/* ===== Mobile menu ===== */
+.nav-mobile {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  pointer-events: auto;
+}
+
+.nav-mobile__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.30);
+  border: 0;
+}
+
+.nav-mobile__panel {
+  position: absolute;
+  top: 84px;
+  right: 1rem;
+  width: min(420px, calc(100% - 2rem));
+  padding: 1.25rem;
+  border-radius: 18px;
+
+  background: rgba(255,255,255,0.90);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.55);
+  box-shadow: 0 18px 60px rgba(0,0,0,0.22);
+
+  display: grid;
+  gap: 1rem;
+}
+
+.nav-mobile__link {
+  color: rgba(0,0,0,0.82);
+  padding: 0.35rem 0.25rem;
+}
+
+.nav-mobile__spacer { height: 0.5rem; }
+
+
+/* ===========================
+   PATCH NAV — MOBILE FIRST
+   Objectif:
+   - Mobile: pas de fond/pill (transparent)
+   - Desktop: pill visible
+   - Align: logo gauche, burger droite
+   =========================== */
+
+/* 1) La barre “shell” tout en haut */
+.nav-shell {
+  position: fixed;
+  top: 6px;          /* ajuste 0..10px selon la maquette */
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* 2) MOBILE: nav transparente + alignements */
+.nav {
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  /* ✅ enlever la pill/fond en mobile */
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  /* ✅ éviter tout padding qui crée du “vide” */
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Logo complètement à gauche */
+.nav__brand {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.nav__logo-img {
+  width: 44px;
+  height: 44px;
+  display: block;
+  object-fit: contain;
+  border-radius: 999px; /* si tu veux garder le côté rond */
+}
+
+/* Burger complètement à droite */
+.nav__burger {
+  margin: 0 !important;
+  padding: 0 !important;
+
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+
+  /* ✅ on garde seulement le petit carré du burger */
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(0, 0, 0, 0.10);
+
+  display: grid;
+  place-items: center;
+}
+
+/* Centrage des lignes du burger (si besoin) */
+.nav__burger-lines {
+  width: 18px;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.62);
+  position: relative;
+  display: block;
+}
+
+.nav__burger-lines::before,
+.nav__burger-lines::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.62);
+}
+
+.nav__burger-lines::before { top: -6px; }
+.nav__burger-lines::after  { top:  6px; }
+
+/* 3) DESKTOP: on réactive la “pill” */
+@media (min-width: 1024px) {
+  .nav {
+    padding: 0.4rem 0.55rem !important;
+    border-radius: 999px !important;
+
+    background: rgba(200, 200, 200, 0.72) !important;
+    border: 1px solid rgba(255, 255, 255, 0.45) !important;
+    box-shadow: 0 16px 50px rgba(0,0,0,0.20) !important;
+
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+  }
+  .nav__burger {
+    display: none;
+  }
+
+
+}

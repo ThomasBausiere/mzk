@@ -1,0 +1,244 @@
+.aboutme {
+  width: 100%;
+  padding: 0;
+  margin-top: 0;
+}
+
+.aboutme__tile {
+  width: 100%;
+  border-radius: 0 0 28px 28px;
+}
+
+/* on garde une marge haute pour que la nav “flotte” */
+.aboutme__inner {
+  	padding-top: 4rem;
+	padding-bottom: 0;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+
+/* TITRES */
+.aboutme__head {
+  margin-bottom: 0;
+}
+
+.aboutme__title {
+  width: 100%;
+  color: var(--accent);
+  font-family: var(--font-family-base);
+  font-weight: 100;
+
+}
+
+.aboutme__subtitle {
+  color: rgba(255, 255, 255, 0.72);
+  margin-top: 0.85rem;
+  text-align: center;
+  margin-inline: auto;
+}
+
+/* CARD */
+.aboutme__card {
+  position: relative;
+  margin-top: 7rem;
+  margin-bottom: 0;
+
+  padding: 5.25rem 2rem 2.25rem; 
+
+  text-align: left;
+}
+
+/* Ring avatar (jaune + blanc) */
+.aboutme__avatar {
+  position: absolute;
+  top: -72px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.aboutme__ring {
+  width: 164px;
+  height: 164px;
+  border-radius: 999px;
+  background: var(--accent); /* #F1C56B */
+  padding: 8px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
+}
+
+.aboutme__ring-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  background: #fff;          /* anneau blanc */
+  padding: 8px;
+}
+
+.aboutme__ring-inner img {
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  object-fit: cover;
+  display: block;
+}
+
+.aboutme__text {
+  padding-top: 4rem;
+  padding-bottom: 0;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.8;
+  text-align: left;
+}
+
+/* CTA du bloc */
+.aboutme__cta {
+  	padding-top: 4rem;
+	padding-bottom: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* PRESTATIONS */
+.aboutme__prestations {
+  padding-top: 4rem;
+	padding-bottom: 4rem;
+
+}
+
+.aboutme__prestations-head {
+  margin-bottom: 5rem;
+}
+
+.aboutme__prestations-title {
+  color: var(--accent);
+
+
+}
+
+.aboutme__prestations-subtitle {
+  margin-top: 0.85rem;
+  color: rgba(255, 255, 255, 0.72);
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* Grid */
+.aboutme__prestations-grid {
+  display: grid;
+  gap: 5rem;
+}
+
+/* ces prestation avec pastille “flottante” */
+.aboutme__service-card {
+  position: relative;
+  padding: 3.5rem 1.75rem 2rem; /* place pour la pastille */
+  text-align: left;
+}
+
+.aboutme__service-icon {
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 84px;
+  height: 84px;
+  border-radius: 999px;
+
+  background: var(--accent); /* full jaune */
+  display: grid;
+  place-items: center;
+
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+}
+
+.aboutme__service-icon img {
+  width: 34px;
+  height: 34px;
+
+  /* si tes SVG ne sont pas déjà blancs, ça les force en blanc */
+  filter: brightness(0) invert(1);
+  display: block;
+}
+
+.aboutme__service-text {
+  padding-top: 5px;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.7;
+  text-align: left;
+}
+
+.aboutme__prestations-cta {
+	padding-top: 4rem;
+	padding-bottom: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+.aboutme__inner{
+  		padding-top: 7rem;
+		padding-bottom:0;
+}
+
+  .aboutme__head {
+    margin-bottom:3em;
+  }
+
+  .aboutme__card {
+  margin-top: 7rem;
+  margin-bottom: 0;
+  
+  }
+
+  .aboutme__avatar {
+    top: -86px;
+  }
+
+  .aboutme__ring {
+    width: 192px;
+    height: 192px;
+    padding: 12px;
+  }
+
+  .aboutme__ring-inner {
+    padding: 10px;
+  }
+
+  .aboutme__prestations {
+    margin-top: 6rem;
+  }
+
+  .aboutme__prestations-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3.75rem;
+  }
+
+  .aboutme__service-card {
+    padding: 3.75rem 2rem 2.25rem;
+  }
+
+  .aboutme__service-icon {
+    width: 92px;
+    height: 92px;
+    top: -38px;
+  }
+
+  .aboutme__service-icon img {
+    width: 50px;
+    height: 50px;
+  }
+
+
+}
+ .test{
+  display: none;
+ }
+
+@media(min-width:1024px){
+
+	.test{
+display: inline
+	}
+}

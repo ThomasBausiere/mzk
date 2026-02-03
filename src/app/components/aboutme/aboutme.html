@@ -1,0 +1,67 @@
+<section class="aboutme">
+  <div class="tile-dark aboutme__tile">
+    <div class="aboutme__inner container">
+      <!-- HEAD -->
+      <div class="aboutme__head center stack">
+        <h1 class="h-display aboutme__title text-accent title">A propos</h1>
+        <p class="aboutme__subtitle texts">
+          En quelques lignes, je vous présente mon parcours et mon expertise
+        </p>
+      </div>
+
+      <!-- CARD -->
+      <div class="aboutme__card tile-surface">
+        <div class="aboutme__avatar">
+          <div class="aboutme__ring">
+            <div class="aboutme__ring-inner">
+              <img src="assets/img/about/amel.jpg" alt="Photo de Amel" />
+            </div>
+          </div>
+        </div>
+
+        <p class="aboutme__text texts">
+          Titulaire d’un Master 2 en Création et Design de la Marque à l'ISCOM et avec 4 ans
+          d’expérience en tant que graphic / motion design, <br class="test"/>j’ai pu collaborer avec plusieurs
+          agences et des marques pour créer des visuels et animations pour le print et le digital.
+          <br /><br />
+          De la prise de brief à la livraison, je m’assure que chaque projet réponde aux attentes des
+          clients tout en apportant des idées créatives et efficaces. Je maîtrise les logiciels Adobe
+          (Photoshop, Illustrator, InDesign, After Effects, Adobe XD) et Blender pour l’animation 3D.
+          <br /><br />
+          Actuellement en freelance, je recherche un CDI ou un CDD pour mettre mes compétences au
+          service d’une entreprise dynamique.
+        </p>
+
+        <div class="aboutme__cta ">
+          <a class="btn btn--primary txtbtn" [href]="mailtoHref ">Contactez moi</a>
+        </div>
+      </div>
+
+      <!-- PRESTATIONS -->
+      <div class="aboutme__prestations">
+        <div class="aboutme__prestations-head center stack">
+          <h2 class="h-display aboutme__prestations-title text-accent title">Mes prestations</h2>
+          <p class="aboutme__prestations-subtitle texts">
+            Trois façons de transformer vos idées en projets visuels concrets, en alliant design et stratégie créative.
+          </p>
+        </div>
+
+        <div class="aboutme__prestations-grid">
+          @for (s of services; track s.text) {
+            <article class="tile-surface aboutme__service-card">
+              <div class="aboutme__service-icon" aria-hidden="true">
+                <img [src]="s.icon" [alt]="s.iconAlt" />
+              </div>
+
+              <p class="aboutme__service-text texts">{{ s.text }}</p>
+            </article>
+          }
+        </div>
+
+        <div class="aboutme__prestations-cta">
+          <a class="btn btn--primary txtbtn" [href]="mailtoHref ">Demander un devis</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

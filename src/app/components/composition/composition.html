@@ -1,0 +1,76 @@
+<section class="composition" [class]="'composition composition--' + composition">
+  <!-- Rangée 1 -->
+  @if (rows.row1.length) {
+    <div class="composition__row composition__row--1">
+      @for (item of rows.row1; track item) {
+        <figure class="composition__media">
+          @if (isVideo(item)) {
+            <video
+              class="composition__asset"
+              [src]="src(item)"
+              autoplay
+              muted
+              loop
+              playsinline
+              [muted]="true"
+              preload="metadata"
+              controls
+            ></video>
+          } @else {
+            <img class="composition__asset" [src]="src(item)" [alt]="item" />
+          }
+        </figure>
+      }
+    </div>
+  }
+
+  <!-- Rangée 2 -->
+  @if (rows.row2.length) {
+    <div class="composition__row composition__row--2">
+      @for (item of rows.row2; track item) {
+        <figure class="composition__media">
+          @if (isVideo(item)) {
+            <video
+              class="composition__asset"
+              [src]="src(item)"
+              autoplay
+              muted
+              loop
+              playsinline
+              [muted]="true"
+              preload="metadata"
+              controls
+            ></video>
+          } @else {
+            <img class="composition__asset" [src]="src(item)" [alt]="item" />
+          }
+        </figure>
+      }
+    </div>
+  }
+
+  <!-- Rangée 3 -->
+  @if (rows.row3.length) {
+    <div class="composition__row composition__row--3">
+      @for (item of rows.row3; track item) {
+        <figure class="composition__media">
+          @if (isVideo(item)) {
+            <video
+              class="composition__asset"
+              [src]="src(item)"
+              autoplay
+              muted
+              loop
+              playsinline
+              [muted]="true"
+              preload="metadata"
+              controls
+            ></video>
+          } @else {
+            <img class="composition__asset" [src]="src(item)" [alt]="item" />
+          }
+        </figure>
+      }
+    </div>
+  }
+</section>

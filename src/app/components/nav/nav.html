@@ -1,0 +1,38 @@
+<header class="nav-shell">
+  <nav class="nav" aria-label="Navigation principale">
+    <a class="nav__brand" routerLink="/home" aria-label="Accueil" (click)="close()">
+      <img class="nav__logo-img" src="assets/logo/compagnies/mzk.svg" alt="Logo Amel Merzouk">
+    </a>
+
+    <div class="nav__links">
+      <a class="nav__link txtbtn" routerLink="/home" routerLinkActive="is-active" (click)="onNavClick()">Accueil</a>
+      <a class="nav__link txtbtn" routerLink="/projects" routerLinkActive="is-active"(click)="onNavClick()">Projets</a>
+      <a class="nav__link txtbtn" routerLink="/about" routerLinkActive="is-active"(click)="onNavClick()">À propos</a>
+    </div>
+
+    <a class="nav__cta btn btn--primary" [href]="mailtoHref" >
+      Contactez moi
+    </a>
+
+    <button class="nav__burger" type="button" (click)="toggle()"
+            [attr.aria-expanded]="isOpen" aria-label="Ouvrir le menu">
+      <span class="nav__burger-lines"></span>
+    </button>
+  </nav>
+
+  @if (isOpen) {
+    <div class="nav-mobile">
+      <button class="nav-mobile__backdrop" type="button" (click)="close()" aria-label="Fermer"></button>
+
+      <div class="nav-mobile__panel">
+        <a class="nav-mobile__link txtbtn" routerLink="/home" (click)="close()">Accueil</a>
+        <a class="nav-mobile__link txtbtn" routerLink="/projects" (click)="close()">Projets</a>
+        <a class="nav-mobile__link txtbtn" routerLink="/about" (click)="close()">À propos</a>
+
+        <div class="nav-mobile__spacer"></div>
+
+        <a class="btn btn--primary txtbtn"[href]="mailtoHref" >Contactez-moi Cv</a>
+      </div>
+    </div>
+  }
+</header>

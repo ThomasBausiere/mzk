@@ -1,1 +1,555 @@
-/* You can add global styles to this file, and also import other style files */
+/* =========================================================
+   DESIGN SYSTEM — styles.css (source de vérité)
+   Basé sur about_mobile.png + about_desktop.png
+   ========================================================= */
+
+/* =========================
+   RESET + BASE
+   ========================= */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; }
+
+img, svg, video, canvas { display: block; max-width: 100%; }
+button, input, textarea, select { font: inherit; color: inherit; }
+a { color: inherit; text-decoration: none; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+p, h1, h2, h3, h4 { margin: 0; }
+p{
+font-size: var(--body-size)
+}
+
+html, body {
+  font-family: var(--font-family-base);
+  color: var(--text);
+  background-color: var(--page-bg);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+
+
+
+/* =========================
+   TOKENS
+   ========================= */
+:root {
+
+  .texts{
+    font-size: var(--body-size-mobile);
+    font-family: var(--font-family-base);
+    font-weight: 100;
+  }
+
+  .title{
+  font-size: var(--title-size-mobile);
+  font-family: var(--font-family-base);
+  font-weight: 100;
+  }
+
+
+  .txtbtn{
+    font-size: var(--btn-size-mobile);
+    font-family: var(--font-family-base);
+    font-weight: 200;
+  }
+
+@media(min-width:1024px){
+      .texts{
+    font-size: var(--body-size);
+    font-weight: 100;
+    }
+      .title{
+    font-size: var(--title-size);
+    font-weight: 100;
+  }
+    .txtbtn{
+    font-size: var(--btn-size);
+    font-weight: 200;
+  }
+
+  }
+
+  --title-size: 48px;
+   --body-size: 18px;
+    --btn-size: 18px;
+  --title-size-mobile: 32px;
+   --body-size-mobile: 14px;
+    --btn-size-mobile: 13px;
+  /* Breakpoints (NE PAS utiliser dans @media, uniquement en JS/logic) */
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+
+  /* Typo */
+  --font-family-base: "nexa", sans-serif;
+  --font-family-display: "nexa", sans-serif;
+
+  --font-size-xs: 0.82rem;
+  --font-size-sm: 0.92rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.55rem;
+  --font-size-2xl: 2.15rem;
+  --font-size-3xl: 2.75rem;
+
+  --line-height-tight: 1.15;
+  --line-height-normal: 1.45;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Layout */
+  --container-max: 70%;
+  --container-pad: 1.5rem;
+  --container-pad2: 10rem;
+
+  /* Radius */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
+  --radius-full: 999px;
+
+  /* Shadows */
+  --shadow-soft: 0 14px 50px rgba(0, 0, 0, 0.20);
+  --shadow-strong: 0 30px 90px rgba(0, 0, 0, 0.35);
+  --shadow-light: 0 18px 30px rgba(0, 0, 0, 0.14);
+
+  /* === Couleurs maquette === */
+
+  /* Accent doré */
+  --accent: #F1C56B;
+  --accent-hover: #F1C56B;
+
+  /* Fond global clair + grille */
+  --page-bg: #EFEFEF;
+  --grid-line: rgba(0, 0, 0, 0.06);
+
+  /* Texte sur fond clair */
+  --text: #141414;
+  --text-muted: rgba(20, 20, 20, 0.72);
+
+  /* Tuile noire */
+  --tile-bg: #111111;
+  --tile-surface: rgba(255, 255, 255, 0.04);
+  --tile-border: rgba(255, 255, 255, 0.08);
+
+  /* Texte sur tuile noire */
+  --on-tile: rgba(255, 255, 255, 0.92);
+  --on-tile-muted: rgba(255, 255, 255, 0.72);
+
+  /* Surfaces claires */
+  --surface: #FFFFFF;
+  --surface-muted: rgba(255, 255, 255, 0.85);
+
+  /* Borders */
+  --border-gold: rgba(231, 184, 90, 0.55);
+  --border-gold-strong: rgba(231, 184, 90, 0.75);
+
+  /* Statuts */
+  --succes-color: #1b6b46;
+  --error-color: #ec6142;
+  
+}
+
+
+
+/* =========================
+   A11Y / HELPERS
+   ========================= */
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0);
+  white-space: nowrap; border: 0;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(240, 197, 107, 0.25);
+  border-color: var(--hover-animed-ui-border-color);
+}
+
+/* =========================
+   TYPO — GLOBAL CLASSES
+   ========================= */
+.text-low { color: var(--low-contrast-text); }
+.text-high { color: var(--high-contast-text); }
+.text-accent { color: var(--main-solid-color); }
+.text-danger { color: var(--error-color); }
+.text-success { color: var(--succes-color); }
+
+.h-display {
+  font-family: var(--font-family-display);
+  letter-spacing: 0.2px;
+  line-height: var(--line-height-tight);
+}
+
+.h1 { 
+  font-size: var(--title-size);
+font-family: var(--font-family-base);
+font-weight: 100; }
+.h2 { font-size: var(--font-size-xl); }
+.h3 { font-size: var(--font-size-lg); }
+
+@media (min-width: var(--bp-md)) {
+  .h1 { font-size: var(--font-size-3xl); }
+  .h2 { font-size: var(--font-size-2xl); }
+}
+
+
+
+
+/* =========================
+   LAYOUT HELPERS
+   ========================= */
+.container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+.container1 {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  margin: 0;
+}
+
+.container2{
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+@media(min-width:1024px){
+  .container2{
+  padding-inline: var(--container-pad2);
+
+  }
+}
+
+
+.section { padding-block: var(--space-12); }
+
+@media (min-width: 768px) { .section { padding-block: var(--space-16); } }
+.center { text-align: center; }
+.stack > * + * { margin-top: var(--space-4); }
+
+.h-display { font-family: var(--font-family-display); line-height: var(--line-height-tight); }
+.h1 { font-size: var(--font-size-2xl); }
+.h2 { font-size: var(--font-size-xl); }
+@media (min-width: 768px) {
+  .h1 { font-size: var(--font-size-3xl); }
+  .h2 { font-size: var(--font-size-2xl); }
+}
+
+.text-accent { color: var(--accent); }
+.text-muted { color: var(--text-muted); }
+
+/* =========================
+   BACKGROUNDS
+   ========================= */
+.bg-dark { background: var(--main-bg-color); color: var(--high-contast-text); }
+
+.bg-light {
+  background: var(--light-bg);
+  color: var(--light-text);
+}
+
+/* grille subtile vue sur la section claire */
+.bg-grid-light {
+  background-color: var(--light-bg);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+/* =========================
+   SURFACES / CARDS
+   ========================= */
+.card {
+  border-radius: var(--radius-lg);
+}
+
+.card--dark {
+  background: var(--default-element-color);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: var(--shadow-soft);
+}
+
+.card--glass {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: var(--blur-medium);
+  -webkit-backdrop-filter: var(--blur-medium);
+}
+
+.card--light {
+  background: var(--light-surface);
+  color: var(--light-text);
+  box-shadow: var(--shadow-light);
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.75rem 1.2rem;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 120ms ease, background 160ms ease, border-color 160ms ease, filter 160ms ease;
+  white-space: nowrap;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn--primary {
+  background: var(--accent);
+  color: #ffffff;              /* <- texte blanc */
+  border-color: var(--border-gold);
+  font-weight: 600; 
+  font-size: var(--btn-size); 
+}
+.btn--primary:hover { background: var(--accent-hover); }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--border-gold);
+}
+.btn--ghost:hover {
+  background: rgba(231, 184, 90, 0.10);
+  border-color: var(--border-gold-strong);
+}
+
+.btn--dark {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--high-contast-text);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.btn--dark:hover { background: rgba(255, 255, 255, 0.10); }
+
+.btn-danger {
+  background: var(--error-color);
+  border-color: var(--error-color);
+  color: #fff;
+}
+.btn-danger:hover { filter: brightness(1.1); }
+
+.btn[disabled], .btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* =========================
+   FIELDS
+   ========================= */
+.input, input, select, textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(240, 197, 107, 0.40);
+  border-radius: var(--radius-md);
+  color: var(--high-contast-text);
+}
+
+.input:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--hover-animed-ui-border-color);
+  box-shadow: 0 0 0 3px rgba(240, 197, 107, 0.18);
+}
+
+/* =========================
+   NAV (desktop visible)
+   ========================= */
+
+
+/* =========================
+   ICON CIRCLES / AVATARS
+   ========================= */
+.icon-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  display: grid;
+  place-items: center;
+  background: rgba(240, 197, 107, 0.18);
+  border: 1px solid rgba(240, 197, 107, 0.55);
+  color: var(--main-solid-color);
+}
+
+.avatar-ring {
+  width: 92px;
+  height: 92px;
+  border-radius: var(--radius-full);
+  padding: 5px;
+  background: rgba(240, 197, 107, 0.20);
+  border: 1px solid rgba(240, 197, 107, 0.65);
+  box-shadow: 0 18px 60px rgba(0,0,0,0.35);
+}
+
+.avatar-ring > img {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  background: rgba(255,255,255,0.06);
+}
+
+/* =========================
+   CAROUSEL BASICS (logos / cards)
+   ========================= */
+.carousel {
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel__track {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-6);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: var(--space-2);
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel__track::-webkit-scrollbar { height: 10px; }
+.carousel__track::-webkit-scrollbar-thumb {
+  background: rgba(240,197,107,0.28);
+  border-radius: var(--radius-full);
+}
+.carousel__track::-webkit-scrollbar-track { background: rgba(255,255,255,0.06); }
+
+.carousel__item {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+}
+
+/* =========================
+   TRUST — LOGOS (entreprises)
+   ========================= */
+.logo-tile {
+  height: 54px;
+  min-width: 120px;
+  display: grid;
+  place-items: center;
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.bg-light .logo-tile {
+  background: rgba(255,255,255,0.92);
+  border-color: rgba(0,0,0,0.10);
+}
+
+/* =========================
+   TRUST — PEOPLE CARDS
+   ========================= */
+.trust-card {
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+}
+
+.trust-card__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.trust-card__name {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-tight);
+}
+
+.trust-card__role {
+  font-size: var(--font-size-xs);
+  color: rgba(240, 197, 107, 0.95);
+  margin-top: var(--space-1);
+}
+
+.trust-card__text {
+  font-size: var(--font-size-sm);
+  color: rgba(20,20,20,0.78);
+  line-height: 1.55;
+}
+
+/* =========================
+   FOOTER CARD (dark, texte doré)
+   ========================= */
+
+/* =========================
+   SMALL UTILITIES (raisonnables)
+   ========================= */
+/* Divider réutilisable */
+.divider {
+  height: 1px;
+  width: 100%;
+  background: rgba(255,255,255,0.10);
+}
+
+.bg-light .divider { background: rgba(0,0,0,0.10); }
+
+.muted { color: var(--low-contrast-text); }
+
+
+.tile-dark {
+  background: var(--tile-bg);
+  color: var(--on-tile);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-strong);
+  
+}
+.tile-surface {
+  background: var(--tile-surface);
+  border: 1px solid var(--tile-border);
+  border-radius: var(--radius-lg);
+}
+
+@media (min-width: 768px){
+  :root{
+    --container-pad: 1.5rem;
+  }
+}
+@media (min-width: 1024px){
+  :root{
+    --container-pad: 2rem;
+  }
+  .container{
+  max-width: var(--container-max);
+
+  }
+  h1{
+      font-size: var(--title-size);
+  font-family: var(--font-family-base);
+  font-weight: 100;
+  }
+}

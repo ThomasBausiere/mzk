@@ -1,0 +1,109 @@
+.composition {
+  	padding-top: 4rem;
+	padding-bottom: 0;
+}
+@media(min-width:1024px){
+
+	.composition{
+		padding-top: 7rem;
+		padding-bottom:0;
+	}
+}
+
+.composition__row {
+  display: grid;
+  gap: 2.25rem;
+  margin-top: 2.25rem;
+}
+
+.composition__row:first-child {
+  margin-top: 0;
+}
+
+/* tuile média */
+.composition__media {
+  margin: 0;
+  border-radius: 22px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.55);
+  box-shadow: var(--shadow-light);
+}
+
+/* l’asset remplit sa tuile */
+.composition__asset {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* MOBILE : tout en 1 colonne (donc on laisse la grid par défaut) */
+.composition__row--1,
+.composition__row--2,
+.composition__row--3 {
+  grid-template-columns: 1fr;
+}
+
+/* Rangée 1 : un “grand bandeau” comme les maquettes */
+.composition__row--1 .composition__media {
+  height: clamp(220px, 46vw, 520px);
+}
+
+/* Rangée 2 / 3 : hauteur plus “carte” */
+.composition__row--2 .composition__media,
+.composition__row--3 .composition__media {
+  height: clamp(220px, 28vw, 420px);
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  .composition__row {
+    gap: 2.5rem;
+  }
+
+  .composition__row--1 .composition__media,
+.composition__row--2 .composition__media,
+.composition__row--3 .composition__media {
+    width: 100%;
+    height: auto;
+}
+.composition__row--3 .composition__media{
+aspect-ratio: 16 / 9;
+  
+    
+}
+
+.composition__row--2 .composition__media{
+aspect-ratio: 1 / 1;
+
+}
+
+.composition__row--1 .composition__media{
+aspect-ratio: 16 / 9;
+
+}
+
+  /* comp 1 & 2 : rangée 2 en 2 colonnes */
+  .composition--1 .composition__row--2,
+  .composition--2 .composition__row--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* comp 3 & 4 : rangée 2 en 3 colonnes */
+  .composition--3 .composition__row--2,
+  .composition--4 .composition__row--2 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* rangée 3 :
+     - comp1 : 1 colonne
+     - comp3 : 1 colonne (tu l’as précisé)
+     - comp4 : 2 colonnes
+  */
+  .composition--4 .composition__row--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+

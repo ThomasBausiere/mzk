@@ -1,0 +1,59 @@
+<section class="projects-page">
+  <div class="projects-page__head">
+    <h1 class="projects-page__title title">Mes projets créatifs</h1>
+    <p class="projects-page__subtitle texts">
+      Découvrez mes projets : branding, supports de communication, sites web, et plus.
+      <br />
+      Chaque création montre ma passion pour le design et l'attention que je porte aux détails.
+      <br />
+      J'espère que vous apprécierez cette galerie où chaque design a une histoire à raconter.
+    </p>
+  </div>
+
+  <nav class="projects-page__filters" aria-label="Filtrer les projets">
+    <button
+      type="button"
+      class="projects-page__chip txtbtn"
+      [class.is-active]="isActive('all')"
+      (click)="setFilter('all')"
+    >
+      Tout
+    </button>
+
+    <button
+      type="button"
+      class="projects-page__chip txtbtn"
+      [class.is-active]="isActive('graphisme')"
+      (click)="setFilter('graphisme')"
+    >
+      Graphisme
+    </button>
+
+    <button
+      type="button"
+      class="projects-page__chip txtbtn"
+      [class.is-active]="isActive('motion-design')"
+      (click)="setFilter('motion-design')"
+    >
+      Motion design
+    </button>
+
+    <button
+      type="button"
+      class="projects-page__chip txtbtn"
+      [class.is-active]="isActive('web-design')"
+      (click)="setFilter('web-design')"
+    >
+      Web design
+    </button>
+  </nav>
+
+  <div class="projects-grid">
+    @for (p of filteredProjects; track p.id) {
+      <a class="project-card" [routerLink]="['/project', p.token]" [attr.aria-label]="p.name">
+        <img class="project-card__img" [src]="p.thumbnailUrl" [alt]="p.name" />
+
+      </a>
+    }
+  </div>
+</section>

@@ -1,0 +1,15 @@
+.home-header {
+  width: 100%;
+}
+
+.home-header__video {
+ 
+  inset: 0;
+  width: 100%;
+  height:fit-content;
+  object-fit: cover;
+}
+
+
+
+

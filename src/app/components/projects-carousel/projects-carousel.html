@@ -1,0 +1,37 @@
+<section class="projects-carousel">
+  <div class="projects-carousel__head center">
+    <h2 class="h-display projects-carousel__title text-accent title">Mes projets créatifs</h2>
+    <p class="projects-carousel__subtitle texts">
+      Decouvrez mes projets : branding, supports de communication, sites web, et plus.
+      Chaque creation montre ma passion pour le design et l'attention que je porte aux details.
+      J'espere que vous apprecierez cette galerie ou chaque design a une histoire a raconter.
+    </p>
+  </div>
+
+  <div
+    class="pc5"
+    (mouseenter)="paused = true"
+    (mouseleave)="paused = false"
+
+  >
+    <div #viewport class="pc5__viewport">
+      <div #track class="pc5__track">
+        @for (p of renderProjects; track p._k) {
+          <a
+            #item
+            class="pc5__item"
+            href="/project/{{ p.token }}"
+            (click)="goToProject(p.token, $event)"
+            [attr.aria-label]="p.title"
+          >
+            <img [src]="p.img" [alt]="p.title" draggable="false" />
+          </a>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="projects-carousel__cta">
+    <a class="btn btn--primary txtbtn" routerLink="/projects">voir plus</a>
+  </div>
+</section>

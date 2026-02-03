@@ -1,0 +1,101 @@
+/* La nav est fixed et flotte : on laisse de l’air en haut */
+.contact {
+  padding-top: 7rem;
+  padding-bottom: 4rem;
+}
+
+.contact__inner {
+  width: min(980px, calc(100% - 2rem));
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact__title {
+  font-size: 3rem;
+  line-height: 1.05;
+}
+
+.contact__lead {
+  margin: 1.25rem auto 0;
+  max-width: 720px;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* carte blanche */
+.contact__card {
+  margin: 3rem auto 0;
+  background: var(--surface);
+  border-radius: 18px;
+  box-shadow: var(--shadow-light);
+  padding: 2rem 1.25rem;
+}
+
+/* form grid */
+.contact__grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.field {
+  text-align: left;
+}
+
+.field__label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: rgba(0,0,0,0.80);
+  margin-bottom: 0.65rem;
+}
+
+.field__input,
+.field__textarea {
+  width: 100%;
+  border: 0;
+  outline: none;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.04);
+  padding: 0.9rem 1rem;
+  color: rgba(0,0,0,0.80);
+}
+
+.field__textarea {
+  resize: none;
+  min-height: 220px;
+}
+
+.contact__submit {
+  margin-top: 1.75rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* desktop: 2 colonnes pour nom/email */
+@media (min-width: 1024px) {
+  .contact {
+    padding-top: 8.5rem;
+    padding-bottom: 5rem;
+  }
+
+  .contact__title { font-size: 3.6rem; }
+
+  .contact__card {
+    padding: 2.25rem 2rem;
+    border-radius: 16px;
+  }
+
+  .contact__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 2rem;
+  }
+
+  .field--full {
+    grid-column: 1 / -1;
+  }
+
+  .field__textarea {
+    min-height: 260px;
+  }
+}

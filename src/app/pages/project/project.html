@@ -1,0 +1,51 @@
+@if (!project) {
+  <section class="project-page">
+    <div class="project-page__missing">
+      <h1 class="project-page__missing-title title">Projet introuvable</h1>
+      <p class="project-page__missing-text texts">
+        Le projet demandé n'existe pas (ou le lien est incorrect).
+      </p>
+    </div>
+  </section>
+} @else {
+  
+  <section class="project-page">
+    <!-- header video (optionnel) -->
+    @if (project.headerUrl) {
+      <div class="project-page__header">
+        <video
+          class="project-page__header-video"
+          [src]="project.headerUrl"
+          autoplay
+          muted
+          loop
+          playsinline
+          [muted]="true"
+        ></video>
+      </div>
+    }
+
+    <div class="project-page__head">
+      <h1 class="project-page__title">{{ project.title || project.name }}</h1>
+      @if (project.description) {
+        <p class="project-page__description">
+          {{ project.description }}
+        </p>
+      }
+    </div>
+<div class="container2">
+
+  <app-composition
+    [token]="project.token"
+    [composition]="project.composition"
+    [media]="project.compositionMedia"
+  ></app-composition>
+</div>
+    <!-- composition -->
+  </section>
+}
+
+<div class="container">
+
+    <app-projects-carousel></app-projects-carousel>
+</div>

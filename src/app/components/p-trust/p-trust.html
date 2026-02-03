@@ -1,0 +1,48 @@
+<section class="p-trust" aria-label="Témoignages">
+  <header class="p-trust__head container">
+    <h2 class="p-trust__title title">Ils me font confiance</h2>
+    <p class="p-trust__subtitle texts">
+      Mes clients apprécient notre collaboration et partagent leur expérience.
+    </p>
+  </header>
+
+  <div class="p-trust__marquee" aria-label="Carrousel de témoignages">
+    <div class="p-trust__track">
+      <div class="p-trust__group" aria-hidden="false">
+        @for (t of testimonials; track t.avatar) {
+          <article class="p-trust__card" tabindex="0">
+            <div class="p-trust__avatar">
+              <div class="p-trust__ring">
+                <div class="p-trust__ring-inner">
+                  <img [src]="t.avatar" [alt]="'Photo de ' + t.name" />
+                </div>
+              </div>
+            </div>
+
+            <h3 class="p-trust__name">{{ t.name }}</h3>
+            <p class="p-trust__role">{{ t.role }}</p>
+            <p class="p-trust__text">{{ t.text }}</p>
+          </article>
+        }
+      </div>
+
+      <div class="p-trust__group" aria-hidden="true">
+        @for (t of testimonials; track t.avatar + '-dup') {
+          <article class="p-trust__card" tabindex="0">
+            <div class="p-trust__avatar">
+              <div class="p-trust__ring">
+                <div class="p-trust__ring-inner">
+                  <img [src]="t.avatar" [alt]="'Photo de ' + t.name" />
+                </div>
+              </div>
+            </div>
+
+            <h3 class="p-trust__name">{{ t.name }}</h3>
+            <p class="p-trust__role">{{ t.role }}</p>
+            <p class="p-trust__text">{{ t.text }}</p>
+          </article>
+        }
+      </div>
+    </div>
+  </div>
+</section>

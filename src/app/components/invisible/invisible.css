@@ -1,0 +1,14 @@
+.nothingtoseeherehellobtw{
+    position: relative;
+    display: block;
+    height: 4rem;
+    width: 0;
+}
+
+@media(min-width:1024px){
+.nothingtoseeherehellobtw{
+    height: 7rem;
+    width: 0;
+    background-color: rgba(240, 248, 255, 0);
+}
+}
