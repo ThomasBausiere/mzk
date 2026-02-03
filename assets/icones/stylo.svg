@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288.46 265.3">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+        stroke: #fff;
+      }
+
+      .cls-1, .cls-3 {
+        stroke-width: 9px;
+      }
+
+      .cls-2 {
+        stroke-width: 10px;
+      }
+
+      .cls-4 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <g id="Courbe">
+    <g>
+      <path class="cls-2" d="M27.56,153.77c0-63.35,54.57-114.71,121.88-114.71s121.88,51.36,121.88,114.71"/>
+      <rect class="cls-4" x="254.17" y="152.31" width="34.29" height="34.29"/>
+      <rect class="cls-4" x="10.41" y="152.31" width="34.29" height="34.29"/>
+    </g>
+  </g>
+  <g id="Tracé">
+    <g>
+      <rect class="cls-4" x="245.27" y="2.12" width="27.57" height="27.57" transform="translate(1.01 43.78) rotate(-9.68)"/>
+      <rect class="cls-4" x="2.12" y="43.59" width="27.57" height="27.57" transform="translate(-9.42 3.49) rotate(-9.68)"/>
+      <line class="cls-1" x1="13.55" y1="57.78" x2="258.3" y2="16.04"/>
+    </g>
+  </g>
+  <g id="Plume">
+    <g>
+      <rect class="cls-3" x="114.82" y="220.36" width="69.22" height="40.44"/>
+      <rect class="cls-3" x="103.94" y="198.58" width="91" height="21.78"/>
+      <polygon class="cls-3" points="177.91 198.37 121.37 198.58 103.69 144.88 149.31 78.1 195.17 144.53 177.91 198.37"/>
+      <line class="cls-1" x1="149.31" y1="78.1" x2="149.31" y2="137.85"/>
+      <circle class="cls-4" cx="149.31" cy="142.7" r="8.54"/>
+    </g>
+  </g>
+</svg>
