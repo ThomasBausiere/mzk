@@ -62,3 +62,6 @@
 		padding-bottom:0;
 	}
 }
+.project-page__header-video{
+  border: 0; /* ✅ pour iframe */
+}

@@ -24,7 +24,13 @@
             (click)="goToProject(p.token, $event)"
             [attr.aria-label]="p.title"
           >
-            <img [src]="p.img" [alt]="p.title" draggable="false" />
+            <img
+              class="pc5__img"
+              [src]="p.img"
+              [alt]="p.title"
+              loading="eager"
+              decoding="async"
+            />
           </a>
         }
       </div>

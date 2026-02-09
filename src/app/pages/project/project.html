@@ -1,18 +1,17 @@
-@if (!project) {
-  <section class="project-page">
-    <div class="project-page__missing">
-      <h1 class="project-page__missing-title title">Projet introuvable</h1>
-      <p class="project-page__missing-text texts">
-        Le projet demandé n'existe pas (ou le lien est incorrect).
-      </p>
-    </div>
-  </section>
-} @else {
-  
-  <section class="project-page">
-    <!-- header video (optionnel) -->
-    @if (project.headerUrl) {
-      <div class="project-page__header">
+@if (project) {
+  @if (project.headerUrl) {
+    <div class="project-page__header">
+      @if (project.headerUrl.includes('youtube.com') || project.headerUrl.includes('youtu.be')) {
+        <iframe
+          class="project-page__header-video"
+          [src]="youtubeHeader(project.headerUrl)"
+          title="Project header video"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      } @else {
         <video
           class="project-page__header-video"
           [src]="project.headerUrl"
@@ -22,10 +21,10 @@
           playsinline
           [muted]="true"
         ></video>
-      </div>
-    }
-
-    <div class="project-page__head">
+      }
+    </div>
+  }
+     <div class="project-page__head">
       <h1 class="project-page__title">{{ project.title || project.name }}</h1>
       @if (project.description) {
         <p class="project-page__description">
@@ -33,19 +32,17 @@
         </p>
       }
     </div>
-<div class="container2">
 
-  <app-composition
-    [token]="project.token"
-    [composition]="project.composition"
-    [media]="project.compositionMedia"
-  ></app-composition>
-</div>
-    <!-- composition -->
-  </section>
-}
 
-<div class="container">
+  <div class="container2">
+    <app-composition
+      [token]="project.token"
+      [composition]="project.composition"
+      [media]="project.compositionMedia"
+    ></app-composition>
+  </div>
 
+  <div class="container">
     <app-projects-carousel></app-projects-carousel>
-</div>
+  </div>
+}

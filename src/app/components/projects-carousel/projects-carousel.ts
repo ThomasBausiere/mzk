@@ -7,6 +7,7 @@ import {
   QueryList,
   OnDestroy,
   inject,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
@@ -29,20 +30,18 @@ type UiProject = {
 })
 export class ProjectsCarousel implements AfterViewInit, OnDestroy {
   private router = inject(Router);
+  private cdr = inject(ChangeDetectorRef);
 
-  /** vitesse de base (px/s) */
   speed = 75;
-
   paused = false;
 
   projects: UiProject[] = PROJECTS.map((p) => ({
     _key: p.token,
     token: p.token,
     title: p.title?.trim() ? p.title : p.name,
-    img: `assets/projects/${p.token}/${p.thumbs}`,
+    img: `assets/projects/${p.token}/${p.thumbs}`, // OK
   }));
 
-  /** belt dupliqué (obligatoire pour l’infini sans saut) */
   renderProjects: (UiProject & { _dup: 1 | 2; _k: string })[] = [];
   private baseLen = 0;
 
@@ -52,39 +51,26 @@ export class ProjectsCarousel implements AfterViewInit, OnDestroy {
 
   private raf = 0;
   private lastT = 0;
-
-  /** translation courante (px) */
   private x = 0;
-
-  /** largeur d’un “tour” (= largeur du 1er set) */
   private loopW = 0;
 
   ngAfterViewInit(): void {
     this.baseLen = this.projects.length;
 
-    // duplique 2x
+    // ✅ 1) remplir le belt
     this.renderProjects = [
       ...this.projects.map((p) => ({ ...p, _dup: 1 as const, _k: `${p._key}-1` })),
       ...this.projects.map((p) => ({ ...p, _dup: 2 as const, _k: `${p._key}-2` })),
     ];
 
-    const tryInit = () => {
-      // on a besoin d'au moins baseLen + 1 items pour calculer loopW
-      if (this.items.length < this.baseLen + 1) return false;
+    // ✅ 2) FORCER le rendu du template (indispensable en zoneless / cas similaires)
+    this.cdr.detectChanges();
 
+    // ✅ 3) attendre que le DOM soit vraiment posé, puis init (measure/start)
+    requestAnimationFrame(() => {
       this.measure();
       this.start();
-
       window.addEventListener('resize', this.onResize, { passive: true });
-      return true;
-    };
-
-    // tentative immédiate
-    if (tryInit()) return;
-
-    // sinon on attend le rendu (items.changes)
-    const sub = this.items.changes.subscribe(() => {
-      if (tryInit()) sub.unsubscribe();
     });
   }
 
@@ -93,19 +79,15 @@ export class ProjectsCarousel implements AfterViewInit, OnDestroy {
     window.removeEventListener('resize', this.onResize);
   }
 
-  private onResize = () => {
-    this.measure();
-  };
+  private onResize = () => this.measure();
 
   private measure() {
     const els = this.items.toArray().map((x) => x.nativeElement);
     if (els.length < this.baseLen + 1) return;
 
-    // le 1er élément du 2e set commence exactement à loopW
     const firstOfSecondSet = els[this.baseLen];
     this.loopW = firstOfSecondSet.offsetLeft;
 
-    // reset position
     this.x = 0;
     this.applyTransform();
     this.updateDistances();
@@ -139,11 +121,6 @@ export class ProjectsCarousel implements AfterViewInit, OnDestroy {
     this.trackRef.nativeElement.style.setProperty('--pcx', `${this.x}px`);
   }
 
-  /**
-   * Anti-saut :
-   * calcule la position des cartes en modulo loopW, et choisit la version la plus proche du centre
-   * => la valeur --d ne "reset" jamais brutalement.
-   */
   private updateDistances() {
     if (!this.loopW) return;
 
@@ -154,11 +131,8 @@ export class ProjectsCarousel implements AfterViewInit, OnDestroy {
 
     for (const el of els) {
       const w = el.offsetWidth;
-
-      // position "bouclée" [0..loopW)
       const baseLeft = this.mod(this.x + el.offsetLeft, this.loopW);
 
-      // candidates autour du centre
       const candidates = [baseLeft, baseLeft - this.loopW, baseLeft + this.loopW];
       let bestDist = Infinity;
 
@@ -179,8 +153,6 @@ export class ProjectsCarousel implements AfterViewInit, OnDestroy {
 
   goToProject(token: string, ev: MouseEvent) {
     ev.preventDefault();
-
-    // évite focus "collant" sur mobile
     this.paused = false;
     (document.activeElement as HTMLElement | null)?.blur();
 
