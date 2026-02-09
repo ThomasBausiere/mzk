@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng build --configuration production --base-href / && copy dist\\mzkpf\\browser\\index.html dist\\mzkpf\\browser\\404.html && npx angular-cli-ghpages --dir=dist/mzkpf/browser --no-history"
+    "deploy": "ng build --configuration production --base-href / && copy /Y dist\\mzkpf\\browser\\index.html dist\\mzkpf\\browser\\404.html && npx angular-cli-ghpages --dir=dist/mzkpf/browser --cname=www.amelmerzouk.com"
 
   },
   "private": true,
