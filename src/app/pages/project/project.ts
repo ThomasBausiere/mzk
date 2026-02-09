@@ -23,12 +23,16 @@ export class Project implements OnInit, OnDestroy {
   project?: ProjectResolved;
   private sub?: Subscription;
 
-  ngOnInit(): void {
-    this.sub = this.route.paramMap.subscribe((params) => {
-      const token = params.get('token') ?? '';
+ngOnInit(): void {
+  this.sub = this.route.paramMap.subscribe((params) => {
+    const token = params.get('token') ?? '';
+
+    this.project = undefined; 
+    queueMicrotask(() => {
       this.project = this.projects.getByToken(token);
     });
-  }
+  });
+}
 
   ngOnDestroy(): void {
     this.sub?.unsubscribe();

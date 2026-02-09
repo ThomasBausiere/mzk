@@ -151,3 +151,14 @@
   padding-bottom: 1rem;
   padding-top: 7rem;
 }
+
+ .test{
+  display: none;
+ }
+
+@media(min-width:1024px){
+
+	.test{
+display: inline
+	}
+}

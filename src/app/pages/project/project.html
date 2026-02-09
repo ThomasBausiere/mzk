@@ -4,6 +4,7 @@
       @if (project.headerUrl.includes('youtube.com') || project.headerUrl.includes('youtu.be')) {
         <iframe
           class="project-page__header-video"
+           [attr.data-key]="project.token"
           [src]="youtubeHeader(project.headerUrl)"
           title="Project header video"
           loading="lazy"

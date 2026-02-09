@@ -156,8 +156,7 @@ export class ProjectsCarousel implements AfterViewInit, OnDestroy {
     this.paused = false;
     (document.activeElement as HTMLElement | null)?.blur();
 
-    this.router.navigate(['/project', token]).then(() => {
-      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-    });
+     this.router.navigate(['/project', token]);
+
   }
 }
