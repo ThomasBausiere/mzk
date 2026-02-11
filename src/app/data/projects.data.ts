@@ -12,8 +12,7 @@ export const PROJECTS: Project[] = [
     thumbs: 'thumbs.jpg',
     logo: 'logo.png',
 
-    // ✅ YouTube
-    header: 'https://www.youtube.com/watch?v=4xFF0RiAKQA',
+    header: 'header.mp4',
 
     title: 'Création graphique :  AC IMMO',
     description:
@@ -40,8 +39,7 @@ export const PROJECTS: Project[] = [
     thumbs: 'thumbs.jpg',
     logo: 'logo.png',
 
-    // ✅ YouTube
-    header: 'https://www.youtube.com/watch?v=5DdWTaIYCpc',
+    header: 'header.mp4',
 
     title: 'Identité graphique : Antéos',
     description: 'Dans le cadre d’une mission freelance, j’ai conçu l’identité graphique complète d’une marque d’argile dédiée à la santé des sportifs, avec un positionnement premium. Le travail s’est concentré sur la création d’une identité forte et impactante, reflétant les valeurs sportives, naturelles et haut de gamme de la marque',
@@ -60,8 +58,7 @@ export const PROJECTS: Project[] = [
     thumbs: 'thumbs.jpg',
     logo: 'logo.png',
 
-    // ✅ YouTube
-    header: 'https://www.youtube.com/watch?v=dMbuzx1DGyI',
+    header: 'header.mp4',
 
     title: 'Application mobile : Institut de Genech',
     description: 'Dans le cadre d’un projet scolaire, j’ai conçu l’UI/UX d’une application pensée pour répondre aux besoins des élèves. Elle leur permet d’accéder à leur emploi du temps et de le gérer en y ajoutant des éléments personnalisés. L’application permet également de suivre l’actualité de l’établissement, de rechercher des stages ou encore d’échanger par e-mail.',
@@ -84,8 +81,7 @@ export const PROJECTS: Project[] = [
     thumbs: 'thumbs.png',
     logo: 'logo.png',
 
-    // ✅ YouTube
-    header: 'https://www.youtube.com/watch?v=6sLg5JveuZQ',
+    header: 'header.mp4',
 
     title: 'CAN 2023',
     description: 'Lors d’une mission freelance pour l’agence BR Units, j’ai travaillé sur la création des visuels dédiés à l’habillage des stades de la CAN 2023. Des vomitoires aux backdrops, en passant par les tapis, les bancs de joueurs et les zones médias, chaque espace a été conçu pour renforcer l’identité visuelle de l’événement. Un projet de grande ampleur qui m’a permis de décliner une charte graphique cohérente et impactante sur de nombreux supports.',
@@ -108,8 +104,7 @@ export const PROJECTS: Project[] = [
     thumbs: 'thumbs.jpg',
     logo: 'logo.png',
 
-    // ✅ YouTube
-    header: 'https://www.youtube.com/watch?v=jaVHwP1efy0',
+    header: 'header.mp4',
 
     title: 'Création graphique :  Icônes Nortia',
     description: 'Pour le site web de Nortia, j’ai conçu et animé des icônes, en développant une direction artistique alignée avec l’image moderne et premium de la marque. Chaque choix graphique respecte la charte tout en renforçant la cohérence visuelle et l’expérience utilisateur.',
@@ -131,8 +126,7 @@ export const PROJECTS: Project[] = [
     thumbs: 'thumbs.jpg',
     logo: 'logo.png',
 
-    // ✅ YouTube
-    header: 'https://www.youtube.com/watch?v=FrPDrUg1_Mw',
+    header: 'header.mp4',
 
     title: 'Création invitation : coupe du monde',
     description: 'Collaboration avec Nortia pour la création de visuels de newsletters invitant les clients à assister à la diffusion de matchs de la Coupe du Monde au Stade de France. Les visuels s’appuient sur les couleurs de l’équipe de France, complétées par l’orange de la charte graphique Nortia. Ce jeu de couleurs complémentaires a été pensé pour créer du contraste, capter l’attention et renforcer la visibilité et l’impact des visuels.',
@@ -151,8 +145,7 @@ export const PROJECTS: Project[] = [
     thumbs: 'thumbs.jpg',
     logo: 'logo.png',
 
-    // ✅ YouTube
-    header: 'https://www.youtube.com/watch?v=2r35omDtOgE',
+    header: 'header.mp4',
 
     title: 'Motion promotionnel : Nortia.fr',
     description: 'Pour valoriser le nouveau site internet de Nortia et renforcer sa visibilité dans un secteur financier traditionnel, j’ai conçu une vidéo en motion design utilisant de la kinetic typography. Une direction artistique minimaliste, associée à des animations fluides et des transitions dynamiques, crée un rendu moderne, élégant et premium, le tout accompagné d’une musique rythmée qui donne au site une identité distinctive et contemporaine.',
@@ -175,8 +168,7 @@ export const PROJECTS: Project[] = [
     thumbs: 'thumbs.jpg',
     logo: 'logo.png',
 
-    // ✅ YouTube
-    header: 'https://www.youtube.com/watch?v=GYWhzLJhvZo',
+    header: 'header.mp4',
 
     title: 'Spot Auto promo : Oh My Diode',
     description: `Durant mon CDD chez Ohmydiode, j'ai eu l'opportunité de réaliser un spot autopromo pour l'agence à l'occasion des vacances d'été. Pour ce projet, j'ai utilisé la 3D en intégrant la technique de l'anamorphisme, ce qui a permis de créer un effet visuel impactant et original.`,
@@ -198,8 +190,7 @@ export const PROJECTS: Project[] = [
     thumbs: 'thumbs.jpg',
     logo: 'logo.png',
 
-    // ✅ YouTube
-    header: 'https://www.youtube.com/watch?v=gkDeOvpGDJk',
+    header: 'header.mp4',
 
     title: 'Motion design : Émission Université 2023',
     description: 'Pour l’entreprise Nortia, j’ai conçu la scénographie en motion design d’un événement annuel diffusé sur TF1, portant sur les dernières tendances de la finance. J’ai réalisé les animations pour les écrans du plateau, les génériques, jingles, sommaires et synthés, et produit des teasers, interviews animées et bannières web pour assurer une communication complète et cohérente autour de l’événement sur les réseaux sociaux.',
