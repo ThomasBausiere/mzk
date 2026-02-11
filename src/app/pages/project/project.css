@@ -13,7 +13,7 @@
   border-radius: 0;
 }
 
-/* ✅ IMPORTANT : pas de height:100% */
+
 .project-page__header-video{
   width: 100%;
   height: auto;

@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-
+import { ViewChild, ElementRef } from '@angular/core';
 import { ProjectsService, ProjectResolved } from '../../services/projects.services';
 import { Composition } from '../../components/composition/composition';
 import { ProjectsCarousel } from '../../components/projects-carousel/projects-carousel';
@@ -17,6 +17,8 @@ import { ProjectsCarousel } from '../../components/projects-carousel/projects-ca
 export class Project implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
   private projects = inject(ProjectsService);
+
+@ViewChild('headerVideo') headerVideo?: ElementRef<HTMLVideoElement>;
 
   project?: ProjectResolved;
   private sub?: Subscription;
@@ -38,4 +40,24 @@ export class Project implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.sub?.unsubscribe();
   }
+  tryPlayHeader() {
+  const v = this.headerVideo?.nativeElement;
+  if (!v) return;
+
+  v.muted = true;        // ✅ double sécurité
+  v.playsInline = true as any;
+
+  const p = v.play();
+  if (p && typeof p.catch === 'function') {
+    p.catch(() => {
+      // autoplay refusé => au moins la vidéo reste affichée (première frame)
+    });
+  }
 }
+}
+
+
+
+
+
+

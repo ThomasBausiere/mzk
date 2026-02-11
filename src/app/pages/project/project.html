@@ -1,16 +1,12 @@
 @if (project) {
   @if (project.headerUrl) {
     <div class="project-page__header">
-      <video
-        class="project-page__header-video"
-        [src]="project.headerUrl"
-        autoplay
-        muted
-        loop
-        playsinline
-        [muted]="true"
-        preload="metadata"
-      ></video>
+  <div class="project-page__ratio">
+    <video class="project-page__header-video"
+      [src]="project.headerUrl"
+      autoplay muted loop playsinline preload="auto">
+    </video>
+  </div>
     </div>
   }
 
