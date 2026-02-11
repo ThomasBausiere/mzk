@@ -13,17 +13,19 @@
 <link rel="dns-prefetch" href="https://www.google.com">
 <script>
   (function () {
-    // If redirected from 404.html, we have ?p=/some/route
-    var seemed = new URL(window.location.href);
-    var p = seemed.searchParams.get('p');
-    if (p) {
-      // clean URL: remove ?p=... then pushState to the intended route
-      seemed.searchParams.delete('p');
-      window.history.replaceState(null, '', seemed.pathname + seemed.search + seemed.hash);
-      window.history.replaceState(null, '', p);
-    }
+    var u = new URL(window.location.href);
+    var p = u.searchParams.get('p');
+    if (!p) return;
+
+    // Nettoie l'URL (retire ?p=...)
+    u.searchParams.delete('p');
+    window.history.replaceState(null, '', u.pathname + u.search + u.hash);
+
+    // Remet la route demandée et laisse Angular router
+    window.history.replaceState(null, '', decodeURIComponent(p));
   })();
 </script>
+
 </head>
 <body>
   <app-root></app-root>

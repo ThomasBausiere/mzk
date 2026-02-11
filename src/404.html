@@ -1,17 +1,16 @@
 <!doctype html>
-<html>
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <title>Redirecting...</title>
+    <title>Redirecting…</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <script>
-      // SPA GitHub Pages redirect
-      // Redirects /project/anteos -> /?p=/project/anteos
+
       (function () {
         var l = window.location;
-        var path = l.pathname + l.search + l.hash;
-        l.replace(l.origin + l.pathname.split('/').slice(0, 1).join('/') + '/?p=' + encodeURIComponent(l.pathname));
+        var p = l.pathname + l.search + l.hash;
+        l.replace(l.origin + '/?p=' + encodeURIComponent(p));
       })();
     </script>
   </head>
