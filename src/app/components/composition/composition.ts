@@ -39,7 +39,7 @@ export class Composition {
     // autoplay+mute+loop requires playlist=<id> for youtube
     const url =
       `https://www.youtube-nocookie.com/embed/${id}` +
-      `?autoplay=1&mute=1&loop=1&playlist=${id}` +
+      `?mute=1&loop=1&playlist=${id}` +
       `&controls=0&modestbranding=1&rel=0&playsinline=1`;
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
