@@ -11,14 +11,13 @@
               title="YouTube video"
               loading="lazy"
               referrerpolicy="strict-origin-when-cross-origin"
-              allow="autoplay; encrypted-media; picture-in-picture"
+              allow="encrypted-media; picture-in-picture"
               allowfullscreen
             ></iframe>
           } @else if (isLocalVideo(item)) {
             <video
               class="composition__asset"
               [src]="src(item)"
-              autoplay
               muted
               loop
               playsinline
@@ -45,14 +44,12 @@
               title="YouTube video"
               loading="lazy"
               referrerpolicy="strict-origin-when-cross-origin"
-              allow="autoplay; encrypted-media; picture-in-picture"
-              allowfullscreen
+              allow=" encrypted-media; picture-in-picture"
             ></iframe>
           } @else if (isLocalVideo(item)) {
             <video
               class="composition__asset"
               [src]="src(item)"
-              autoplay
               muted
               loop
               playsinline
@@ -79,14 +76,12 @@
               title="YouTube video"
               loading="lazy"
               referrerpolicy="strict-origin-when-cross-origin"
-              allow="autoplay; encrypted-media; picture-in-picture"
-              allowfullscreen
+              allow=" encrypted-media; picture-in-picture"
             ></iframe>
           } @else if (isLocalVideo(item)) {
             <video
               class="composition__asset"
               [src]="src(item)"
-              autoplay
               muted
               loop
               playsinline
