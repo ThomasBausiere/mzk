@@ -11,7 +11,19 @@
 <link rel="preconnect" href="https://www.google.com">
 <link rel="dns-prefetch" href="https://www.youtube-nocookie.com">
 <link rel="dns-prefetch" href="https://www.google.com">
-
+<script>
+  (function () {
+    // If redirected from 404.html, we have ?p=/some/route
+    var seemed = new URL(window.location.href);
+    var p = seemed.searchParams.get('p');
+    if (p) {
+      // clean URL: remove ?p=... then pushState to the intended route
+      seemed.searchParams.delete('p');
+      window.history.replaceState(null, '', seemed.pathname + seemed.search + seemed.hash);
+      window.history.replaceState(null, '', p);
+    }
+  })();
+</script>
 </head>
 <body>
   <app-root></app-root>
