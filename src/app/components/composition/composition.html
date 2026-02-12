@@ -10,6 +10,13 @@
         >
           <div class="composition__clip">
             @if (isVimeo(item)) {
+              @if (!isActive(item)) {
+              <button class="composition__poster" type="button" (click)="activate(item)">
+                <span class="composition__play" aria-hidden="true"></span>
+                <span class="sr-only">Lire la vidéo</span>
+              </button>
+            } @else {
+
               <iframe
                 class="composition__asset composition__asset--vimeo"
                 [src]="vimeoEmbed(item)"
@@ -20,6 +27,12 @@
                 allowfullscreen
               ></iframe>
             } @else if (isYouTube(item)) {
+              @if (!isActive(item)) {
+                <button class="composition__poster" type="button" (click)="activate(item)">
+                  <span class="composition__play" aria-hidden="true"></span>
+                  <span class="sr-only">Lire la vidéo</span>
+                </button>
+              } @else {
               <iframe
                 class="composition__asset composition__asset--yt"
                 [src]="youtubeEmbed(item)"
@@ -56,6 +69,13 @@
         >
           <div class="composition__clip">
             @if (isVimeo(item)) {
+              @if (!isActive(item)) {
+              <button class="composition__poster" type="button" (click)="activate(item)">
+                <span class="composition__play" aria-hidden="true"></span>
+                <span class="sr-only">Lire la vidéo</span>
+              </button>
+            } @else {
+
               <iframe
                 class="composition__asset composition__asset--vimeo"
                 [src]="vimeoEmbed(item)"
@@ -66,6 +86,12 @@
                 allowfullscreen
               ></iframe>
             } @else if (isYouTube(item)) {
+              @if (!isActive(item)) {
+                <button class="composition__poster" type="button" (click)="activate(item)">
+                  <span class="composition__play" aria-hidden="true"></span>
+                  <span class="sr-only">Lire la vidéo</span>
+                </button>
+              } @else {
               <iframe
                 class="composition__asset composition__asset--yt"
                 [src]="youtubeEmbed(item)"
@@ -75,7 +101,7 @@
                 allow="fullscreen; picture-in-picture"
                 allowfullscreen
               ></iframe>
-            } @else if (isLocalVideo(item)) {
+            }  @else if (isLocalVideo(item)) {
               <video
                 class="composition__asset"
                 [src]="src(item)"
@@ -102,6 +128,14 @@
         >
           <div class="composition__clip">
             @if (isVimeo(item)) {
+              {
+              @if (!isActive(item)) {
+              <button class="composition__poster" type="button" (click)="activate(item)">
+                <span class="composition__play" aria-hidden="true"></span>
+                <span class="sr-only">Lire la vidéo</span>
+              </button>
+            } @else {
+
               <iframe
                 class="composition__asset composition__asset--vimeo"
                 [src]="vimeoEmbed(item)"
@@ -112,6 +146,12 @@
                 allowfullscreen
               ></iframe>
             } @else if (isYouTube(item)) {
+              @if (!isActive(item)) {
+                <button class="composition__poster" type="button" (click)="activate(item)">
+                  <span class="composition__play" aria-hidden="true"></span>
+                  <span class="sr-only">Lire la vidéo</span>
+                </button>
+              } @else {
               <iframe
                 class="composition__asset composition__asset--yt"
                 [src]="youtubeEmbed(item)"
@@ -121,7 +161,7 @@
                 allow="fullscreen; picture-in-picture"
                 allowfullscreen
               ></iframe>
-            } @else if (isLocalVideo(item)) {
+            }  @else if (isLocalVideo(item)) {
               <video
                 class="composition__asset"
                 [src]="src(item)"

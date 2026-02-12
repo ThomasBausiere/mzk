@@ -36,32 +36,25 @@ isVimeo(fileOrUrl: string): boolean {
     return /(^https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\//i.test(fileOrUrl);
   }
 
-youtubeEmbed(fileOrUrl: string): SafeResourceUrl {
+youtubeEmbed(fileOrUrl: string, autoplay = false): SafeResourceUrl {
   const id = this.extractYouTubeId(fileOrUrl);
-
-
   const url =
     `https://www.youtube-nocookie.com/embed/${id}` +
-    `?playsinline=1&controls=1&rel=0&modestbranding=1`;
-
+    `?playsinline=1&controls=1&rel=0&modestbranding=1` +
+    (autoplay ? `&autoplay=1` : ``);
   return this.sanitizer.bypassSecurityTrustResourceUrl(url);
 }
 
-vimeoEmbed(fileOrUrl: string): SafeResourceUrl {
-  const id = this.extractVimeoId(fileOrUrl);
 
-  // ✅ inline + pas d'autoplay (tu as dit OK si l'utilisateur clique)
-  // loop=1 (boucle)
-  // title/byline/portrait=0 (UI plus clean)
-  // dnt=1 (privacy)
-  // playsinline=1 (important mobile)
+vimeoEmbed(fileOrUrl: string, autoplay = false): SafeResourceUrl {
+  const id = this.extractVimeoId(fileOrUrl);
   const url =
     `https://player.vimeo.com/video/${id}` +
-    `?autoplay=0&muted=0&loop=1&playsinline=1` +
-    `&title=0&byline=0&portrait=0&dnt=1`;
-
+    `?playsinline=1&loop=1&title=0&byline=0&portrait=0&dnt=1&controls=1` +
+    (autoplay ? `&autoplay=1` : ``);
   return this.sanitizer.bypassSecurityTrustResourceUrl(url);
 }
+
   private extractYouTubeId(input: string): string {
     // If already looks like an id (11 chars), accept it
     if (/^[a-zA-Z0-9_-]{11}$/.test(input)) return input;
@@ -152,5 +145,15 @@ private extractVimeoId(input: string): string {
   }
 
   return '';
+}
+
+activeEmbeds = new Set<string>();
+
+activate(item: string) {
+  this.activeEmbeds.add(item);
+}
+
+isActive(item: string) {
+  return this.activeEmbeds.has(item);
 }
 }
