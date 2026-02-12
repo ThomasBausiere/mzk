@@ -1,42 +1,46 @@
 <section class="composition" [class]="'composition composition--' + composition">
+
   <!-- Rangée 1 -->
   @if (rows.row1.length) {
     <div class="composition__row composition__row--1">
       @for (item of rows.row1; track item) {
-        <figure class="composition__media">
-          @if (isVimeo(item)) {
-            <iframe
-              class="composition__asset composition__asset--vimeo"
-              [src]="vimeoEmbed(item)"
-              title="Vimeo video"
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          }
-          @else if (isYouTube(item)) {
-            <iframe
-              class="composition__asset composition__asset--yt"
-              [src]="youtubeEmbed(item)"
-              title="YouTube video"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
-          } @else if (isLocalVideo(item)) {
-            <video
-              class="composition__asset"
-              [src]="src(item)"
-              muted
-              loop
-              playsinline
-              [muted]="true"
-              preload="metadata"
-            ></video>
-          } @else {
-            <img class="composition__asset" [src]="src(item)" [alt]="item" />
-          }
+        <figure
+          class="composition__media"
+          [class.composition__media--embed]="isYouTube(item) || isVimeo(item)"
+        >
+          <div class="composition__clip">
+            @if (isVimeo(item)) {
+              <iframe
+                class="composition__asset composition__asset--vimeo"
+                [src]="vimeoEmbed(item)"
+                title="Vimeo video"
+                loading="eager"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="fullscreen; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            } @else if (isYouTube(item)) {
+              <iframe
+                class="composition__asset composition__asset--yt"
+                [src]="youtubeEmbed(item)"
+                title="YouTube video"
+                loading="eager"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="fullscreen; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            } @else if (isLocalVideo(item)) {
+              <video
+                class="composition__asset"
+                [src]="src(item)"
+                playsinline
+                preload="metadata"
+                controls
+              ></video>
+            } @else {
+              <img class="composition__asset" [src]="src(item)" [alt]="item" />
+            }
+          </div>
         </figure>
       }
     </div>
@@ -46,40 +50,43 @@
   @if (rows.row2.length) {
     <div class="composition__row composition__row--2">
       @for (item of rows.row2; track item) {
-        <figure class="composition__media">
-          @if (isVimeo(item)) {
-            <iframe
-              class="composition__asset composition__asset--vimeo"
-              [src]="vimeoEmbed(item)"
-              title="Vimeo video"
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          }
-          @else if (isYouTube(item)) {
-            <iframe
-              class="composition__asset composition__asset--yt"
-              [src]="youtubeEmbed(item)"
-              title="YouTube video"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
-          } @else if (isLocalVideo(item)) {
-            <video
-              class="composition__asset"
-              [src]="src(item)"
-              muted
-              loop
-              playsinline
-              [muted]="true"
-              preload="metadata"
-            ></video>
-          } @else {
-            <img class="composition__asset" [src]="src(item)" [alt]="item" />
-          }
+        <figure
+          class="composition__media"
+          [class.composition__media--embed]="isYouTube(item) || isVimeo(item)"
+        >
+          <div class="composition__clip">
+            @if (isVimeo(item)) {
+              <iframe
+                class="composition__asset composition__asset--vimeo"
+                [src]="vimeoEmbed(item)"
+                title="Vimeo video"
+                loading="eager"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="fullscreen; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            } @else if (isYouTube(item)) {
+              <iframe
+                class="composition__asset composition__asset--yt"
+                [src]="youtubeEmbed(item)"
+                title="YouTube video"
+                loading="eager"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="fullscreen; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            } @else if (isLocalVideo(item)) {
+              <video
+                class="composition__asset"
+                [src]="src(item)"
+                playsinline
+                preload="metadata"
+                controls
+              ></video>
+            } @else {
+              <img class="composition__asset" [src]="src(item)" [alt]="item" />
+            }
+          </div>
         </figure>
       }
     </div>
@@ -89,42 +96,46 @@
   @if (rows.row3.length) {
     <div class="composition__row composition__row--3">
       @for (item of rows.row3; track item) {
-        <figure class="composition__media">
-        @if (isVimeo(item)) {
-            <iframe
-              class="composition__asset composition__asset--vimeo"
-              [src]="vimeoEmbed(item)"
-              title="Vimeo video"
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          }
-          @else if (isYouTube(item)) {
-            <iframe
-              class="composition__asset composition__asset--yt"
-              [src]="youtubeEmbed(item)"
-              title="YouTube video"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
-          } @else if (isLocalVideo(item)) {
-            <video
-              class="composition__asset"
-              [src]="src(item)"
-              muted
-              loop
-              playsinline
-              [muted]="true"
-              preload="metadata"
-            ></video>
-          } @else {
-            <img class="composition__asset" [src]="src(item)" [alt]="item" />
-          }
+        <figure
+          class="composition__media"
+          [class.composition__media--embed]="isYouTube(item) || isVimeo(item)"
+        >
+          <div class="composition__clip">
+            @if (isVimeo(item)) {
+              <iframe
+                class="composition__asset composition__asset--vimeo"
+                [src]="vimeoEmbed(item)"
+                title="Vimeo video"
+                loading="eager"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="fullscreen; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            } @else if (isYouTube(item)) {
+              <iframe
+                class="composition__asset composition__asset--yt"
+                [src]="youtubeEmbed(item)"
+                title="YouTube video"
+                loading="eager"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="fullscreen; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            } @else if (isLocalVideo(item)) {
+              <video
+                class="composition__asset"
+                [src]="src(item)"
+                playsinline
+                preload="metadata"
+                controls
+              ></video>
+            } @else {
+              <img class="composition__asset" [src]="src(item)" [alt]="item" />
+            }
+          </div>
         </figure>
       }
     </div>
   }
+
 </section>

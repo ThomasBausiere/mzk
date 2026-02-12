@@ -1,189 +1,126 @@
-.composition {
-  	padding-top: 4rem;
-	padding-bottom: 0;
-}
-@media(min-width:1024px){
-
-	.composition{
-		padding-top: 7rem;
-		padding-bottom:0;
-	}
+.composition{
+  padding-top: 4rem;
+  padding-bottom: 0;
 }
 
-.composition__row {
+@media (min-width: 1024px){
+  .composition{
+    padding-top: 7rem;
+    padding-bottom: 0;
+  }
+}
+
+/* rows */
+.composition__row{
   display: grid;
   gap: 2.25rem;
   margin-top: 2.25rem;
 }
 
-.composition__row:first-child {
+.composition__row:first-child{
   margin-top: 0;
 }
 
-/* tuile média */
-.composition__media {
+/* MOBILE : 1 colonne */
+.composition__row--1,
+.composition__row--2,
+.composition__row--3{
+  grid-template-columns: 1fr;
+}
+
+/* tailles mobile (fidèle à ce que tu avais) */
+.composition__row--1 .composition__media{
+  height: clamp(220px, 46vw, 520px);
+}
+
+.composition__row--2 .composition__media,
+.composition__row--3 .composition__media{
+  height: clamp(220px, 28vw, 420px);
+}
+
+/* tuile (par défaut) */
+.composition__media{
   margin: 0;
+  border-radius: 22px;
+  overflow: hidden; /* OK pour img & video locale */
+  background: rgba(255,255,255,0.55);
+  box-shadow: var(--shadow-light);
+  position: relative;
+}
+
+/* wrapper de clip : IMPORTANT pour iframe iOS */
+.composition__clip{
+  width: 100%;
+  height: 100%;
   border-radius: 22px;
   overflow: hidden;
   background: rgba(255,255,255,0.55);
   box-shadow: var(--shadow-light);
 }
 
-/* l’asset remplit sa tuile */
-.composition__asset {
+/* embed (yt/vimeo) : éviter que le FIGURE clippe l'iframe (bug iOS) */
+.composition__media--embed{
+  overflow: visible;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* asset full size */
+.composition__asset{
   width: 100%;
   height: 100%;
   display: block;
   object-fit: cover;
 }
 
-/* MOBILE : tout en 1 colonne (donc on laisse la grid par défaut) */
-.composition__row--1,
-.composition__row--2,
-.composition__row--3 {
-  grid-template-columns: 1fr;
-}
-
-/* Rangée 1 : un “grand bandeau” comme les maquettes */
-.composition__row--1 .composition__media {
-  height: clamp(220px, 46vw, 520px);
-}
-
-/* Rangée 2 / 3 : hauteur plus “carte” */
-.composition__row--2 .composition__media,
-.composition__row--3 .composition__media {
-  height: clamp(220px, 28vw, 420px);
+/* iframes */
+.composition__asset--yt,
+.composition__asset--vimeo{
+  border: 0;
+  pointer-events: auto;
+  background: #000; /* écran noir stable pendant load */
 }
 
 /* DESKTOP */
-@media (min-width: 1024px) {
-  .composition__row {
+@media (min-width: 1024px){
+  .composition__row{
     gap: 2.5rem;
   }
 
+  /* sur desktop on travaille à l'aspect-ratio (plutôt que height clamp) */
   .composition__row--1 .composition__media,
-.composition__row--2 .composition__media,
-.composition__row--3 .composition__media {
-    width: 100%;
+  .composition__row--2 .composition__media,
+  .composition__row--3 .composition__media{
     height: auto;
-}
-.composition__row--3 .composition__media{
-aspect-ratio: 16 / 9;
-  
-    
-}
+    width: 100%;
+  }
 
-.composition__row--2 .composition__media{
-aspect-ratio: 1 / 1;
+  .composition__row--1 .composition__media{
+    aspect-ratio: 16 / 9;
+  }
 
-}
+  .composition__row--2 .composition__media{
+    aspect-ratio: 1 / 1;
+  }
 
-.composition__row--1 .composition__media{
-aspect-ratio: 16 / 9;
+  .composition__row--3 .composition__media{
+    aspect-ratio: 16 / 9;
+  }
 
-}
-
-  /* comp 1 & 2 : rangée 2 en 2 colonnes */
+  /* comp 1 & 2 : row2 = 2 colonnes */
   .composition--1 .composition__row--2,
-  .composition--2 .composition__row--2 {
+  .composition--2 .composition__row--2{
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* comp 3 & 4 : rangée 2 en 3 colonnes */
+  /* comp 3 & 4 : row2 = 3 colonnes */
   .composition--3 .composition__row--2,
-  .composition--4 .composition__row--2 {
+  .composition--4 .composition__row--2{
     grid-template-columns: repeat(3, 1fr);
   }
 
-  /* rangée 3 :
-     - comp1 : 1 colonne
-     - comp3 : 1 colonne (tu l’as précisé)
-     - comp4 : 2 colonnes
-  */
-  .composition--4 .composition__row--3 {
+  /* comp 4 : row3 = 2 colonnes (les autres restent 1 colonne) */
+  .composition--4 .composition__row--3{
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-
-
-/* ✅ YouTube iframe doit remplir la tuile */
-.composition__asset--yt{
-  width: 100%;
-  height: 100%;
-  display: block;
-  border: 0;
-}
-.composition__media {
-  position: relative;
-}
-
-.composition__asset--yt {
-  pointer-events: auto;
-}
-/* iOS: améliore les taps sur iframe dans des conteneurs stylés */
-.composition__media{
-  position: relative;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-}
-
-/* assure que l'iframe reçoit bien les taps */
-.composition__asset--yt{
-  pointer-events: auto;
-  border: 0;
-}
-
-
-@media (max-width: 1023px){
-  /* iOS fix: évite de clipper l'iframe YouTube */
-  .composition__media:has(.composition__asset--yt){
-    overflow: visible;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
-  }
-
-  .composition__asset--yt{
-    border-radius: 22px; /* on garde le look sur l'iframe elle-même */
-    overflow: hidden;
-  }
-}
-/* ✅ Rend l’iframe "tapable" sur iOS */
-.composition__media {
-  position: relative;
-}
-
-/* iOS Safari aime mieux quand l'iframe est "au-dessus" */
-.composition__asset--yt,
-.composition__asset--vimeo {
-  position: relative;
-  z-index: 1;
-  pointer-events: auto;
-  border: 0;
-}
-
-/* ✅ Mobile : ne clippe pas l’iframe, sinon tap peut bugger sur iOS */
-@media (max-width: 1023px) {
-  .composition__media:has(.composition__asset--yt),
-  .composition__media:has(.composition__asset--vimeo) {
-    overflow: visible;
-  }
-
-  /* on recrée le visuel arrondi via un wrapper implicite */
-  .composition__media:has(.composition__asset--yt)::before,
-  .composition__media:has(.composition__asset--vimeo)::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 22px;
-    pointer-events: none;
-    box-shadow: var(--shadow-light);
-  }
-
-  .composition__asset--yt,
-  .composition__asset--vimeo {
-    border-radius: 22px;
-    overflow: hidden; /* côté iframe */
   }
 }
