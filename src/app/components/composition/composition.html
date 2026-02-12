@@ -127,7 +127,7 @@
           [class.composition__media--embed]="isYouTube(item) || isVimeo(item)"
         >
           <div class="composition__clip">
-            @if (isVimeo(item)) {
+            @if (isVimeo(item)) 
               {
               @if (!isActive(item)) {
               <button class="composition__poster" type="button" (click)="activate(item)">
