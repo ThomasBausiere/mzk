@@ -20,11 +20,11 @@ export const PROJECTS: Project[] = [
 
     // comp 3 = 5 medias
     compositionMedia: [
-      'https://www.youtube.com/watch?v=JKbAOwIlNm4', // 01
+      'https://vimeo.com/1164019734', // 01
       '02.png',
       '03.png',
       '04.png',
-      'https://www.youtube.com/watch?v=TwFo_vpPaSw', // 05
+      'https://vimeo.com/1164020943', // 05
     ],
   },
 

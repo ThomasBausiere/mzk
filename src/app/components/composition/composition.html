@@ -4,7 +4,18 @@
     <div class="composition__row composition__row--1">
       @for (item of rows.row1; track item) {
         <figure class="composition__media">
-          @if (isYouTube(item)) {
+          @if (isVimeo(item)) {
+            <iframe
+              class="composition__asset composition__asset--vimeo"
+              [src]="vimeoEmbed(item)"
+              title="Vimeo video"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          }
+          @else if (isYouTube(item)) {
             <iframe
               class="composition__asset composition__asset--yt"
               [src]="youtubeEmbed(item)"
@@ -36,7 +47,18 @@
     <div class="composition__row composition__row--2">
       @for (item of rows.row2; track item) {
         <figure class="composition__media">
-          @if (isYouTube(item)) {
+          @if (isVimeo(item)) {
+            <iframe
+              class="composition__asset composition__asset--vimeo"
+              [src]="vimeoEmbed(item)"
+              title="Vimeo video"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          }
+          @else if (isYouTube(item)) {
             <iframe
               class="composition__asset composition__asset--yt"
               [src]="youtubeEmbed(item)"
@@ -68,16 +90,26 @@
     <div class="composition__row composition__row--3">
       @for (item of rows.row3; track item) {
         <figure class="composition__media">
-          @if (isYouTube(item)) {
-<iframe
-  class="composition__asset composition__asset--yt"
-  [src]="youtubeEmbed(item)"
-  title="YouTube video"
-  referrerpolicy="strict-origin-when-cross-origin"
-  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
-  allowfullscreen
-></iframe>
-
+        @if (isVimeo(item)) {
+            <iframe
+              class="composition__asset composition__asset--vimeo"
+              [src]="vimeoEmbed(item)"
+              title="Vimeo video"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          }
+          @else if (isYouTube(item)) {
+            <iframe
+              class="composition__asset composition__asset--yt"
+              [src]="youtubeEmbed(item)"
+              title="YouTube video"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
           } @else if (isLocalVideo(item)) {
             <video
               class="composition__asset"

@@ -29,7 +29,9 @@ export class Composition {
   isLocalVideo(fileOrUrl: string): boolean {
     return /\.(mp4|webm|ogg)$/i.test(fileOrUrl);
   }
-
+isVimeo(fileOrUrl: string): boolean {
+  return /(^https?:\/\/)?(www\.)?(vimeo\.com|player\.vimeo\.com)\//i.test(fileOrUrl);
+}
   isYouTube(fileOrUrl: string): boolean {
     return /(^https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\//i.test(fileOrUrl);
   }
@@ -41,6 +43,22 @@ youtubeEmbed(fileOrUrl: string): SafeResourceUrl {
   const url =
     `https://www.youtube-nocookie.com/embed/${id}` +
     `?playsinline=1&controls=1&rel=0&modestbranding=1`;
+
+  return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+}
+
+vimeoEmbed(fileOrUrl: string): SafeResourceUrl {
+  const id = this.extractVimeoId(fileOrUrl);
+
+  // ✅ inline + pas d'autoplay (tu as dit OK si l'utilisateur clique)
+  // loop=1 (boucle)
+  // title/byline/portrait=0 (UI plus clean)
+  // dnt=1 (privacy)
+  // playsinline=1 (important mobile)
+  const url =
+    `https://player.vimeo.com/video/${id}` +
+    `?autoplay=0&muted=0&loop=1&playsinline=1` +
+    `&title=0&byline=0&portrait=0&dnt=1`;
 
   return this.sanitizer.bypassSecurityTrustResourceUrl(url);
 }
@@ -111,4 +129,28 @@ youtubeThumb(fileOrUrl: string): string {
   return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 }
 
+private extractVimeoId(input: string): string {
+  // accepte directement un id numérique
+  if (/^\d+$/.test(input)) return input;
+
+  try {
+    const u = new URL(input);
+
+    // player.vimeo.com/video/<id>
+    const parts = u.pathname.split('/').filter(Boolean);
+    const videoIndex = parts.indexOf('video');
+    if (videoIndex >= 0 && parts[videoIndex + 1]) return parts[videoIndex + 1];
+
+    // vimeo.com/<id> ou vimeo.com/channels/.../<id> ou /showcase/.../video/<id>
+    // on prend le dernier segment numérique
+    const lastNumeric = [...parts].reverse().find(p => /^\d+$/.test(p));
+    if (lastNumeric) return lastNumeric;
+  } catch {
+    // fallback regex
+    const m = input.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+    if (m?.[1]) return m[1];
+  }
+
+  return '';
+}
 }
