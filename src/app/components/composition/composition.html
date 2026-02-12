@@ -5,21 +5,16 @@
       @for (item of rows.row1; track item) {
         <figure class="composition__media">
           @if (isYouTube(item)) {
-  @if (!open.has(item)) {
-    <!-- ✅ Overlay clickable -->
-    <button
-      type="button"
-      class="composition__yt-overlay"
-      (click)="playYouTube(item)"
-      [attr.aria-label]="'Lire la vidéo'"
-    >
-      <img class="composition__yt-thumb" [src]="youtubeThumb(item)" alt="" />
-      <span class="composition__yt-play" aria-hidden="true"></span>
-    </button>
-  } @else {
-    <!-- ✅ Mount point pour l'API YT -->
-    <div class="composition__yt-player" [id]="domIdFor(item)"></div>
-  }
+<iframe
+  class="composition__asset composition__asset--yt"
+  [src]="youtubeEmbed(item)"
+  title="YouTube video"
+  loading="lazy"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen
+></iframe>
+
           } @else if (isLocalVideo(item)) {
             <video
               class="composition__asset"
@@ -44,21 +39,16 @@
       @for (item of rows.row2; track item) {
         <figure class="composition__media">
           @if (isYouTube(item)) {
-  @if (!open.has(item)) {
-    <!-- ✅ Overlay clickable -->
-    <button
-      type="button"
-      class="composition__yt-overlay"
-      (click)="playYouTube(item)"
-      [attr.aria-label]="'Lire la vidéo'"
-    >
-      <img class="composition__yt-thumb" [src]="youtubeThumb(item)" alt="" />
-      <span class="composition__yt-play" aria-hidden="true"></span>
-    </button>
-  } @else {
-    <!-- ✅ Mount point pour l'API YT -->
-    <div class="composition__yt-player" [id]="domIdFor(item)"></div>
-  }
+<iframe
+  class="composition__asset composition__asset--yt"
+  [src]="youtubeEmbed(item)"
+  title="YouTube video"
+  loading="lazy"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen
+></iframe>
+
           } @else if (isLocalVideo(item)) {
             <video
               class="composition__asset"
@@ -83,21 +73,16 @@
       @for (item of rows.row3; track item) {
         <figure class="composition__media">
           @if (isYouTube(item)) {
-  @if (!open.has(item)) {
-    <!-- ✅ Overlay clickable -->
-    <button
-      type="button"
-      class="composition__yt-overlay"
-      (click)="playYouTube(item)"
-      [attr.aria-label]="'Lire la vidéo'"
-    >
-      <img class="composition__yt-thumb" [src]="youtubeThumb(item)" alt="" />
-      <span class="composition__yt-play" aria-hidden="true"></span>
-    </button>
-  } @else {
-    <!-- ✅ Mount point pour l'API YT -->
-    <div class="composition__yt-player" [id]="domIdFor(item)"></div>
-  }
+<iframe
+  class="composition__asset composition__asset--yt"
+  [src]="youtubeEmbed(item)"
+  title="YouTube video"
+  loading="lazy"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen
+></iframe>
+
           } @else if (isLocalVideo(item)) {
             <video
               class="composition__asset"

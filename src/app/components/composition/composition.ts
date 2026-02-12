@@ -1,20 +1,8 @@
-import {
-  Component,
-  Input,
-  AfterViewInit,
-  OnDestroy,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 type CompositionRow = string[];
-
-declare global {
-  interface Window {
-    YT?: any;
-    onYouTubeIframeAPIReady?: () => void;
-  }
-}
 
 @Component({
   selector: 'app-composition',
@@ -22,22 +10,13 @@ declare global {
   imports: [CommonModule],
   templateUrl: './composition.html',
   styleUrls: ['./composition.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Composition implements AfterViewInit, OnDestroy {
+export class Composition {
   @Input({ required: true }) token!: string;
   @Input({ required: true }) composition!: 1 | 2 | 3 | 4;
   @Input({ required: true }) media: string[] = [];
 
-  /** quels items youtube sont “ouverts” (player monté) */
-  open = new Set<string>();
-
-  /** players par item */
-  private players = new Map<string, any>();
-
-  private apiLoading = false;
-  private apiReady = false;
-  private apiPromise: Promise<void> | null = null;
+  constructor(private sanitizer: DomSanitizer) {}
 
   get basePath(): string {
     return `assets/projects/${this.token}/`;
@@ -55,144 +34,35 @@ export class Composition implements AfterViewInit, OnDestroy {
     return /(^https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\//i.test(fileOrUrl);
   }
 
-  /** thumbnail youtube */
-  youtubeThumb(url: string): string {
-    const id = this.extractYouTubeId(url);
-    // maxres peut ne pas exister → hqdefault est safe
-    return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
-  }
+youtubeEmbed(fileOrUrl: string): SafeResourceUrl {
+  const id = this.extractYouTubeId(fileOrUrl);
 
-  /** id stable pour dom */
-  domIdFor(item: string): string {
-    const id = this.extractYouTubeId(item);
-    return `yt-${this.token}-${id}`;
-  }
 
-  ngAfterViewInit(): void {
-    // on ne charge l’API que si on a au moins une vidéo YouTube
-    if (this.media?.some((m) => this.isYouTube(m))) {
-      this.ensureYouTubeApi();
-    }
-  }
+  const url =
+    `https://www.youtube-nocookie.com/embed/${id}` +
+    `?playsinline=1&controls=1&rel=0&modestbranding=1`;
 
-  ngOnDestroy(): void {
-    // cleanup players
-    for (const p of this.players.values()) {
-      try {
-        p.destroy?.();
-      } catch {}
-    }
-    this.players.clear();
-  }
-
-  async playYouTube(item: string) {
-    // ouvre l’overlay → mount player
-    this.open.add(item);
-
-    await this.ensureYouTubeApi();
-
-    // laisse le DOM rendre le <div id="...">
-    await new Promise<void>((resolve) => queueMicrotask(() => resolve()));
-
-    const mountId = this.domIdFor(item);
-    const videoId = this.extractYouTubeId(item);
-    if (!videoId) return;
-
-    // déjà créé
-    const existing = this.players.get(item);
-    if (existing) {
-      try {
-        existing.playVideo?.();
-      } catch {}
-      return;
-    }
-
-    const YT = window.YT;
-    if (!YT?.Player) return;
-
-    const player = new YT.Player(mountId, {
-      videoId,
-      playerVars: {
-        autoplay: 1,           // on clique => autorisé
-        playsinline: 1,
-        controls: 1,
-        rel: 0,
-        modestbranding: 1,
-      },
-      events: {
-        onReady: (e: any) => {
-          // lecture immédiate (geste utilisateur)
-          try {
-            e.target.playVideo();
-          } catch {}
-        },
-      },
-    });
-
-    this.players.set(item, player);
-  }
-
-  private ensureYouTubeApi(): Promise<void> {
-    if (this.apiReady) return Promise.resolve();
-    if (this.apiPromise) return this.apiPromise;
-
-    this.apiPromise = new Promise<void>((resolve) => {
-      // API déjà présente
-      if (window.YT?.Player) {
-        this.apiReady = true;
-        resolve();
-        return;
-      }
-
-      // si déjà en train de charger
-      if (this.apiLoading) {
-        // on attend le callback
-        const prev = window.onYouTubeIframeAPIReady;
-        window.onYouTubeIframeAPIReady = () => {
-          prev?.();
-          this.apiReady = true;
-          resolve();
-        };
-        return;
-      }
-
-      this.apiLoading = true;
-
-      const prev = window.onYouTubeIframeAPIReady;
-      window.onYouTubeIframeAPIReady = () => {
-        prev?.();
-        this.apiReady = true;
-        resolve();
-      };
-
-      const s = document.createElement('script');
-      s.src = 'https://www.youtube.com/iframe_api';
-      s.async = true;
-      s.onload = () => {
-        // certains navigateurs ne déclenchent pas le ready immédiatement
-        // le resolve se fera via onYouTubeIframeAPIReady
-      };
-      document.head.appendChild(s);
-    });
-
-    return this.apiPromise;
-  }
-
+  return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+}
   private extractYouTubeId(input: string): string {
+    // If already looks like an id (11 chars), accept it
     if (/^[a-zA-Z0-9_-]{11}$/.test(input)) return input;
 
     try {
       const u = new URL(input);
+      // youtu.be/<id>
       if (u.hostname.includes('youtu.be')) {
         return u.pathname.replace('/', '').split('/')[0] || '';
       }
+      // youtube.com/watch?v=<id>
       const v = u.searchParams.get('v');
       if (v) return v;
-
+      // youtube.com/embed/<id>
       const parts = u.pathname.split('/').filter(Boolean);
       const embedIndex = parts.indexOf('embed');
       if (embedIndex >= 0 && parts[embedIndex + 1]) return parts[embedIndex + 1];
     } catch {
+      // fallback regex
       const m = input.match(/(?:v=|\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
       if (m?.[1]) return m[1];
     }
