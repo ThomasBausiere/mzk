@@ -16,10 +16,7 @@
   gap: 2.25rem;
   margin-top: 2.25rem;
 }
-
-.composition__row:first-child{
-  margin-top: 0;
-}
+.composition__row:first-child{ margin-top: 0; }
 
 /* MOBILE : 1 colonne */
 .composition__row--1,
@@ -28,27 +25,26 @@
   grid-template-columns: 1fr;
 }
 
-/* tailles mobile (fidèle à ce que tu avais) */
+/* tailles mobile */
 .composition__row--1 .composition__media{
   height: clamp(220px, 46vw, 520px);
 }
-
 .composition__row--2 .composition__media,
 .composition__row--3 .composition__media{
   height: clamp(220px, 28vw, 420px);
 }
 
-/* tuile (par défaut) */
+/* tuile */
 .composition__media{
   margin: 0;
   border-radius: 22px;
-  overflow: hidden; /* OK pour img & video locale */
+  overflow: hidden;
   background: rgba(255,255,255,0.55);
   box-shadow: var(--shadow-light);
   position: relative;
 }
 
-/* wrapper de clip : IMPORTANT pour iframe iOS */
+/* IMPORTANT iOS : wrapper de clip */
 .composition__clip{
   width: 100%;
   height: 100%;
@@ -58,14 +54,14 @@
   box-shadow: var(--shadow-light);
 }
 
-/* embed (yt/vimeo) : éviter que le FIGURE clippe l'iframe (bug iOS) */
+/* Pour les embeds (yt/vimeo), on évite que le FIGURE clippe l'iframe (bug iOS) */
 .composition__media--embed{
   overflow: visible;
   background: transparent;
   box-shadow: none;
 }
 
-/* asset full size */
+/* asset */
 .composition__asset{
   width: 100%;
   height: 100%;
@@ -78,16 +74,13 @@
 .composition__asset--vimeo{
   border: 0;
   pointer-events: auto;
-  background: #000; /* écran noir stable pendant load */
+  background: #000;
 }
 
 /* DESKTOP */
 @media (min-width: 1024px){
-  .composition__row{
-    gap: 2.5rem;
-  }
+  .composition__row{ gap: 2.5rem; }
 
-  /* sur desktop on travaille à l'aspect-ratio (plutôt que height clamp) */
   .composition__row--1 .composition__media,
   .composition__row--2 .composition__media,
   .composition__row--3 .composition__media{
@@ -95,82 +88,21 @@
     width: 100%;
   }
 
-  .composition__row--1 .composition__media{
-    aspect-ratio: 16 / 9;
-  }
+  .composition__row--1 .composition__media{ aspect-ratio: 16 / 9; }
+  .composition__row--2 .composition__media{ aspect-ratio: 1 / 1; }
+  .composition__row--3 .composition__media{ aspect-ratio: 16 / 9; }
 
-  .composition__row--2 .composition__media{
-    aspect-ratio: 1 / 1;
-  }
-
-  .composition__row--3 .composition__media{
-    aspect-ratio: 16 / 9;
-  }
-
-  /* comp 1 & 2 : row2 = 2 colonnes */
   .composition--1 .composition__row--2,
   .composition--2 .composition__row--2{
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* comp 3 & 4 : row2 = 3 colonnes */
   .composition--3 .composition__row--2,
   .composition--4 .composition__row--2{
     grid-template-columns: repeat(3, 1fr);
   }
 
-  /* comp 4 : row3 = 2 colonnes (les autres restent 1 colonne) */
   .composition--4 .composition__row--3{
     grid-template-columns: repeat(2, 1fr);
   }
-}
-.composition__poster{
-  width: 100%;
-  height: 100%;
-  border: 0;
-  padding: 0;
-  display: block;
-  background: #000;
-  position: relative;
-  cursor: pointer;
-}
-
-.composition__poster-img{
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  opacity: 0.92;
-}
-
-.composition__play{
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 64px;
-  height: 64px;
-  border-radius: 999px;
-  background: rgba(0,0,0,0.55);
-  border: 2px solid rgba(255,255,255,0.75);
-}
-
-.composition__play::before{
-  content: "";
-  position: absolute;
-  left: 26px;
-  top: 18px;
-  width: 0;
-  height: 0;
-  border-left: 18px solid rgba(255,255,255,0.9);
-  border-top: 14px solid transparent;
-  border-bottom: 14px solid transparent;
-}
-
-/* accessibilité */
-.sr-only{
-  position:absolute;
-  width:1px;height:1px;
-  padding:0;margin:-1px;
-  overflow:hidden;clip:rect(0,0,0,0);
-  white-space:nowrap;border:0;
 }
