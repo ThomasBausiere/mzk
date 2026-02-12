@@ -149,3 +149,16 @@ aspect-ratio: 16 / 9;
     overflow: hidden;
   }
 }
+/* ✅ Rend l’iframe "tapable" sur iOS */
+.composition__media {
+  position: relative;
+}
+
+/* iOS Safari aime mieux quand l'iframe est "au-dessus" */
+.composition__asset--yt,
+.composition__asset--vimeo {
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+  border: 0;
+}
