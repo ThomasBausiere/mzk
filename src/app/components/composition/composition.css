@@ -162,3 +162,28 @@ aspect-ratio: 16 / 9;
   pointer-events: auto;
   border: 0;
 }
+
+/* ✅ Mobile : ne clippe pas l’iframe, sinon tap peut bugger sur iOS */
+@media (max-width: 1023px) {
+  .composition__media:has(.composition__asset--yt),
+  .composition__media:has(.composition__asset--vimeo) {
+    overflow: visible;
+  }
+
+  /* on recrée le visuel arrondi via un wrapper implicite */
+  .composition__media:has(.composition__asset--yt)::before,
+  .composition__media:has(.composition__asset--vimeo)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 22px;
+    pointer-events: none;
+    box-shadow: var(--shadow-light);
+  }
+
+  .composition__asset--yt,
+  .composition__asset--vimeo {
+    border-radius: 22px;
+    overflow: hidden; /* côté iframe */
+  }
+}
