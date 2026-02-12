@@ -121,3 +121,14 @@ aspect-ratio: 16 / 9;
 .composition__asset--yt {
   pointer-events: auto;
 }
+/* iOS: améliore les taps sur iframe dans des conteneurs stylés */
+.composition__media{
+  position: relative;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* assure que l'iframe reçoit bien les taps */
+.composition__asset--yt{
+  pointer-events: auto;
+}
