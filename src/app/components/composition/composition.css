@@ -114,3 +114,10 @@ aspect-ratio: 16 / 9;
   display: block;
   border: 0;
 }
+.composition__media {
+  position: relative;
+}
+
+.composition__asset--yt {
+  pointer-events: auto;
+}

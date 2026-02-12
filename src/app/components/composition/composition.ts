@@ -34,16 +34,15 @@ export class Composition {
     return /(^https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\//i.test(fileOrUrl);
   }
 
-  youtubeEmbed(fileOrUrl: string): SafeResourceUrl {
-    const id = this.extractYouTubeId(fileOrUrl);
-    // autoplay+mute+loop requires playlist=<id> for youtube
-    const url =
-      `https://www.youtube-nocookie.com/embed/${id}` +
-      `?mute=1&loop=1&playlist=${id}` +
-      `&controls=0&modestbranding=1&rel=0&playsinline=1`;
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-  }
+youtubeEmbed(fileOrUrl: string): SafeResourceUrl {
+  const id = this.extractYouTubeId(fileOrUrl);
 
+  const url =
+    `https://www.youtube-nocookie.com/embed/${id}` +
+    `?controls=1&autoplay=0&rel=0&modestbranding=1&playsinline=1`;
+
+  return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+}
   private extractYouTubeId(input: string): string {
     // If already looks like an id (11 chars), accept it
     if (/^[a-zA-Z0-9_-]{11}$/.test(input)) return input;
