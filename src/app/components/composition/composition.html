@@ -11,37 +11,38 @@
           <div class="composition__clip">
             @if (isVimeo(item)) {
               @if (!isActive(item)) {
-              <button class="composition__poster" type="button" (click)="activate(item)">
-                <span class="composition__play" aria-hidden="true"></span>
-                <span class="sr-only">Lire la vidéo</span>
-              </button>
-            } @else {
-
-              <iframe
-                class="composition__asset composition__asset--vimeo"
-                [src]="vimeoEmbed(item)"
-                title="Vimeo video"
-                loading="eager"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allow="fullscreen; picture-in-picture"
-                allowfullscreen
-              ></iframe>
-            } @else if (isYouTube(item)) {
-              @if (!isActive(item)) {
                 <button class="composition__poster" type="button" (click)="activate(item)">
                   <span class="composition__play" aria-hidden="true"></span>
                   <span class="sr-only">Lire la vidéo</span>
                 </button>
               } @else {
-              <iframe
-                class="composition__asset composition__asset--yt"
-                [src]="youtubeEmbed(item)"
-                title="YouTube video"
-                loading="eager"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allow="fullscreen; picture-in-picture"
-                allowfullscreen
-              ></iframe>
+                <iframe
+                  class="composition__asset composition__asset--vimeo"
+                  [src]="vimeoEmbed(item, true)"
+                  title="Vimeo video"
+                  loading="eager"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+                  allowfullscreen
+                ></iframe>}
+            } @else if (isYouTube(item)) {
+               @if (!isActive(item)) {
+                <button class="composition__poster" type="button" (click)="activate(item)">
+                  <img class="composition__poster-img" [src]="youtubeThumb(item)" alt="" />
+                  <span class="composition__play" aria-hidden="true"></span>
+                  <span class="sr-only">Lire la vidéo</span>
+                </button>
+              } @else {
+                  <iframe
+                    class="composition__asset composition__asset--yt"
+                    [src]="youtubeEmbed(item, true)"
+                    title="YouTube video"
+                    loading="eager"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+                    allowfullscreen
+                  ></iframe>
+                }
             } @else if (isLocalVideo(item)) {
               <video
                 class="composition__asset"
@@ -68,40 +69,41 @@
           [class.composition__media--embed]="isYouTube(item) || isVimeo(item)"
         >
           <div class="composition__clip">
-            @if (isVimeo(item)) {
-              @if (!isActive(item)) {
-              <button class="composition__poster" type="button" (click)="activate(item)">
-                <span class="composition__play" aria-hidden="true"></span>
-                <span class="sr-only">Lire la vidéo</span>
-              </button>
-            } @else {
-
-              <iframe
-                class="composition__asset composition__asset--vimeo"
-                [src]="vimeoEmbed(item)"
-                title="Vimeo video"
-                loading="eager"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allow="fullscreen; picture-in-picture"
-                allowfullscreen
-              ></iframe>
-            } @else if (isYouTube(item)) {
+                        @if (isVimeo(item)) {
               @if (!isActive(item)) {
                 <button class="composition__poster" type="button" (click)="activate(item)">
                   <span class="composition__play" aria-hidden="true"></span>
                   <span class="sr-only">Lire la vidéo</span>
                 </button>
               } @else {
-              <iframe
-                class="composition__asset composition__asset--yt"
-                [src]="youtubeEmbed(item)"
-                title="YouTube video"
-                loading="eager"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allow="fullscreen; picture-in-picture"
-                allowfullscreen
-              ></iframe>
-            }  @else if (isLocalVideo(item)) {
+                <iframe
+                  class="composition__asset composition__asset--vimeo"
+                  [src]="vimeoEmbed(item, true)"
+                  title="Vimeo video"
+                  loading="eager"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+                  allowfullscreen
+                ></iframe>}
+            } @else if (isYouTube(item)) {
+               @if (!isActive(item)) {
+                <button class="composition__poster" type="button" (click)="activate(item)">
+                  <img class="composition__poster-img" [src]="youtubeThumb(item)" alt="" />
+                  <span class="composition__play" aria-hidden="true"></span>
+                  <span class="sr-only">Lire la vidéo</span>
+                </button>
+              } @else {
+                  <iframe
+                    class="composition__asset composition__asset--yt"
+                    [src]="youtubeEmbed(item, true)"
+                    title="YouTube video"
+                    loading="eager"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+                    allowfullscreen
+                  ></iframe>
+                }
+            } @else if (isLocalVideo(item)) {
               <video
                 class="composition__asset"
                 [src]="src(item)"
@@ -127,41 +129,41 @@
           [class.composition__media--embed]="isYouTube(item) || isVimeo(item)"
         >
           <div class="composition__clip">
-            @if (isVimeo(item)) 
-              {
-              @if (!isActive(item)) {
-              <button class="composition__poster" type="button" (click)="activate(item)">
-                <span class="composition__play" aria-hidden="true"></span>
-                <span class="sr-only">Lire la vidéo</span>
-              </button>
-            } @else {
-
-              <iframe
-                class="composition__asset composition__asset--vimeo"
-                [src]="vimeoEmbed(item)"
-                title="Vimeo video"
-                loading="eager"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allow="fullscreen; picture-in-picture"
-                allowfullscreen
-              ></iframe>
-            } @else if (isYouTube(item)) {
+                       @if (isVimeo(item)) {
               @if (!isActive(item)) {
                 <button class="composition__poster" type="button" (click)="activate(item)">
                   <span class="composition__play" aria-hidden="true"></span>
                   <span class="sr-only">Lire la vidéo</span>
                 </button>
               } @else {
-              <iframe
-                class="composition__asset composition__asset--yt"
-                [src]="youtubeEmbed(item)"
-                title="YouTube video"
-                loading="eager"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allow="fullscreen; picture-in-picture"
-                allowfullscreen
-              ></iframe>
-            }  @else if (isLocalVideo(item)) {
+                <iframe
+                  class="composition__asset composition__asset--vimeo"
+                  [src]="vimeoEmbed(item, true)"
+                  title="Vimeo video"
+                  loading="eager"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+                  allowfullscreen
+                ></iframe>}
+            } @else if (isYouTube(item)) {
+               @if (!isActive(item)) {
+                <button class="composition__poster" type="button" (click)="activate(item)">
+                  <img class="composition__poster-img" [src]="youtubeThumb(item)" alt="" />
+                  <span class="composition__play" aria-hidden="true"></span>
+                  <span class="sr-only">Lire la vidéo</span>
+                </button>
+              } @else {
+                  <iframe
+                    class="composition__asset composition__asset--yt"
+                    [src]="youtubeEmbed(item, true)"
+                    title="YouTube video"
+                    loading="eager"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+                    allowfullscreen
+                  ></iframe>
+                }
+            } @else if (isLocalVideo(item)) {
               <video
                 class="composition__asset"
                 [src]="src(item)"
