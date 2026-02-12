@@ -135,3 +135,17 @@ aspect-ratio: 16 / 9;
 }
 
 
+@media (max-width: 1023px){
+  /* iOS fix: évite de clipper l'iframe YouTube */
+  .composition__media:has(.composition__asset--yt){
+    overflow: visible;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .composition__asset--yt{
+    border-radius: 22px; /* on garde le look sur l'iframe elle-même */
+    overflow: hidden;
+  }
+}

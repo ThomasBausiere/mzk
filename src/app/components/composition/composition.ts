@@ -94,4 +94,21 @@ youtubeEmbed(fileOrUrl: string): SafeResourceUrl {
     const row3 = m.slice(4, 6);
     return { row1, row2, row3 };
   }
+
+
+  openYouTubeUrl: SafeResourceUrl | null = null;
+
+openYouTube(item: string) {
+  this.openYouTubeUrl = this.youtubeEmbed(item);
+}
+
+closeYouTube() {
+  this.openYouTubeUrl = null;
+}
+
+youtubeThumb(fileOrUrl: string): string {
+  const id = this.extractYouTubeId(fileOrUrl);
+  return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+}
+
 }
