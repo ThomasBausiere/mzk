@@ -186,7 +186,7 @@ export const PROJECTS: Project[] = [
     companyName: 'universite',
     categories: ['motion-design'],
     composition: 1,
-    thumbnail: 'thumb.jpg',
+    thumbnail: 'thumb.png',
     thumbs: 'thumbs.jpg',
     logo: 'logo.png',
 

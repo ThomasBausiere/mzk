@@ -11,10 +11,10 @@
   }
 
   <div class="project-page__head">
-    <h1 class="project-page__title">{{ project.title || project.name }}</h1>
+    <h1 class="project-page__title title">{{ project.title || project.name }}</h1>
 
     @if (project.description) {
-      <p class="project-page__description">
+      <p class="project-page__description texts">
         {{ project.description }}
       </p>
     }

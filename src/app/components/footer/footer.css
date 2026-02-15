@@ -132,6 +132,11 @@
 
 }
 
+.footer__icon-svg--linkedin{
+  -webkit-mask-image: url("../../../assets/icones/linkedin.svg");
+  mask-image: url("../../../assets/icones/linkedin.svg");
+}
+
 .footer__icon-svg--phone{
   -webkit-mask-image: url("../../../assets/icones/phone.svg");
   mask-image: url("../../../assets/icones/phone.svg");
