@@ -54,7 +54,7 @@ export const PROJECTS: Project[] = [
     companyName: 'app',
     categories: ['web-design'],
     composition: 2,
-    thumbnail: 'thumb.jpeg',
+    thumbnail: 'thumb.jpg',
     thumbs: 'thumbs.jpg',
     logo: 'logo.png',
 
@@ -64,9 +64,9 @@ export const PROJECTS: Project[] = [
     description: 'Dans le cadre d’un projet scolaire, j’ai conçu l’UI/UX d’une application pensée pour répondre aux besoins des élèves. Elle leur permet d’accéder à leur emploi du temps et de le gérer en y ajoutant des éléments personnalisés. L’application permet également de suivre l’actualité de l’établissement, de rechercher des stages ou encore d’échanger par e-mail.',
     // comp 2 = 3 medias
     compositionMedia: [
-      'https://www.youtube.com/watch?v=NWamvh_II9U', // 01
-      'https://www.youtube.com/watch?v=Bm7Dh4C-Ks8', // 02
-      'https://www.youtube.com/watch?v=oaPLorvjR2E', // 03
+      '01.jpg', // 01
+      '02.gif', // 01
+      '03.jpg'
     ],
   },
 
