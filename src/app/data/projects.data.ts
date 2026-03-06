@@ -1,6 +1,28 @@
 import { Project } from '../models/projects';
 
 export const PROJECTS: Project[] = [
+    {
+    id: 'meca',
+    token: 'meca',
+    name: 'meca',
+    companyName: 'meca',
+    categories: ['graphisme'],
+    composition: 1,
+    thumbnail: 'thumb.png',
+    thumbs: 'thumbs.png',
+    logo: 'logo.png',
+
+    header: 'header.mp4',
+
+    title: 'Mecatechnic : Création graphique',
+    description: 'Lors de mon CDD chez Mecatechnic, j’ai participé à la création et à la déclinaison de visuels destinés à promouvoir les offres et services de la marque à l’international. J’ai réalisé différents supports de communication, aussi bien digitaux que print, en veillant à respecter et valoriser l’identité visuelle de l’entreprise.',
+    compositionMedia: [
+      '01.png', // 01 
+      '02.gif', // 02
+      '03.gif', // 03
+      '04.gif', // 04
+    ],
+  },
   {
     id: 'ac-immo',
     token: 'ac-immo',
@@ -201,26 +223,5 @@ export const PROJECTS: Project[] = [
       'https://www.youtube.com/watch?v=P0kd3Hob4Vc', // 04
     ],
   },
-  {
-    id: 'meca',
-    token: 'meca',
-    name: 'meca',
-    companyName: 'meca',
-    categories: ['graphisme'],
-    composition: 1,
-    thumbnail: 'thumb.png',
-    thumbs: 'thumbs.png',
-    logo: 'logo.png',
 
-    header: 'header.mp4',
-
-    title: 'Motion design : Émission Université 2023',
-    description: 'Pour l’entreprise Nortia, j’ai conçu la scénographie en motion design d’un événement annuel diffusé sur TF1, portant sur les dernières tendances de la finance. J’ai réalisé les animations pour les écrans du plateau, les génériques, jingles, sommaires et synthés, et produit des teasers, interviews animées et bannières web pour assurer une communication complète et cohérente autour de l’événement sur les réseaux sociaux.',
-    compositionMedia: [
-      '01.png', // 01 
-      '02.gif', // 02
-      '03.gif', // 03
-      '04.gif', // 04
-    ],
-  },
 ];
