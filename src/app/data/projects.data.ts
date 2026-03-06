@@ -20,11 +20,11 @@ export const PROJECTS: Project[] = [
 
     // comp 3 = 5 medias
     compositionMedia: [
-      'https://vimeo.com/1164019734', // 01
+      '01.gif', // 01
       '02.png',
       '03.png',
       '04.png',
-      'https://vimeo.com/1164020943', // 05
+      '05.gif', // 05
     ],
   },
 
@@ -35,8 +35,8 @@ export const PROJECTS: Project[] = [
     companyName: 'anteos',
     categories: ['graphisme'],
     composition: 1,
-    thumbnail: 'thumb.jpeg',
-    thumbs: 'thumbs.jpg',
+    thumbnail: 'thumb.png',
+    thumbs: 'thumbs.png',
     logo: 'logo.png',
 
     header: 'header.mp4',
@@ -44,7 +44,7 @@ export const PROJECTS: Project[] = [
     title: 'Identité graphique : Antéos',
     description: 'Dans le cadre d’une mission freelance, j’ai conçu l’identité graphique complète d’une marque d’argile dédiée à la santé des sportifs, avec un positionnement premium. Le travail s’est concentré sur la création d’une identité forte et impactante, reflétant les valeurs sportives, naturelles et haut de gamme de la marque',
     // comp 1 = 4 medias (images)
-    compositionMedia: ['01.png', '02.png', '03.png', '04.png'],
+    compositionMedia: ['01.gif', '02.gif', '03.gif', '04.gif'],
   },
 
   {
@@ -64,8 +64,8 @@ export const PROJECTS: Project[] = [
     description: 'Dans le cadre d’un projet scolaire, j’ai conçu l’UI/UX d’une application pensée pour répondre aux besoins des élèves. Elle leur permet d’accéder à leur emploi du temps et de le gérer en y ajoutant des éléments personnalisés. L’application permet également de suivre l’actualité de l’établissement, de rechercher des stages ou encore d’échanger par e-mail.',
     // comp 2 = 3 medias
     compositionMedia: [
-      '01.jpg', // 01
-      '02.gif', // 01
+      '01.gif', // 01
+      '02.jpg', // 01
       '03.jpg'
     ],
   },
@@ -109,9 +109,9 @@ export const PROJECTS: Project[] = [
     title: 'Création graphique :  Icônes Nortia',
     description: 'Pour le site web de Nortia, j’ai conçu et animé des icônes, en développant une direction artistique alignée avec l’image moderne et premium de la marque. Chaque choix graphique respecte la charte tout en renforçant la cohérence visuelle et l’expérience utilisateur.',
     compositionMedia: [
-      'https://www.youtube.com/watch?v=X9RoDw4cVA4', // 01
-      'https://www.youtube.com/watch?v=emUdBSU-ijc', // 02
-      'https://www.youtube.com/watch?v=kkzPinrdr6w', // 03
+      '01.png', // 01
+      '02.gif', // 02
+      '03.gif', // 03
     ],
   },
 
@@ -150,10 +150,10 @@ export const PROJECTS: Project[] = [
     title: 'Motion promotionnel : Nortia.fr',
     description: 'Pour valoriser le nouveau site internet de Nortia et renforcer sa visibilité dans un secteur financier traditionnel, j’ai conçu une vidéo en motion design utilisant de la kinetic typography. Une direction artistique minimaliste, associée à des animations fluides et des transitions dynamiques, crée un rendu moderne, élégant et premium, le tout accompagné d’une musique rythmée qui donne au site une identité distinctive et contemporaine.',
     compositionMedia: [
-      'https://www.youtube.com/watch?v=MeEkVYsvOA0', // 01
-      'https://www.youtube.com/watch?v=OxI8AQK_aCs', // 02
-      'https://www.youtube.com/watch?v=2CnQ74XmM_g', // 03
-      'https://www.youtube.com/watch?v=sRqcj-bTas0', // 04
+      '01.gif', // 01
+      '02.gif', // 02
+      '03.gif', // 03
+      '04.gif' // 04
     ],
   },
 
@@ -199,6 +199,28 @@ export const PROJECTS: Project[] = [
       'https://www.youtube.com/watch?v=6TZptp3fhRA', // 02
       'https://www.youtube.com/watch?v=JSRUUUMDWBw', // 03
       'https://www.youtube.com/watch?v=P0kd3Hob4Vc', // 04
+    ],
+  },
+  {
+    id: 'meca',
+    token: 'meca',
+    name: 'meca',
+    companyName: 'meca',
+    categories: ['graphisme'],
+    composition: 1,
+    thumbnail: 'thumb.png',
+    thumbs: 'thumbs.png',
+    logo: 'logo.png',
+
+    header: 'header.mp4',
+
+    title: 'Motion design : Émission Université 2023',
+    description: 'Pour l’entreprise Nortia, j’ai conçu la scénographie en motion design d’un événement annuel diffusé sur TF1, portant sur les dernières tendances de la finance. J’ai réalisé les animations pour les écrans du plateau, les génériques, jingles, sommaires et synthés, et produit des teasers, interviews animées et bannières web pour assurer une communication complète et cohérente autour de l’événement sur les réseaux sociaux.',
+    compositionMedia: [
+      '01.png', // 01 
+      '02.gif', // 02
+      '03.gif', // 03
+      '04.gif', // 04
     ],
   },
 ];
