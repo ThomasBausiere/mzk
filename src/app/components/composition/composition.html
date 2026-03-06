@@ -1,4 +1,8 @@
-<section class="composition" [class]="'composition composition--' + composition">
+<section
+  class="composition"
+  [class]="'composition composition--' + composition"
+  [attr.data-token]="token"
+>
 
   <!-- Rangée 1 -->
   @if (rows.row1.length) {

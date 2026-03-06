@@ -47,33 +47,43 @@ export class Composition {
     return `Vignette de la vidéo ${index + 1}`;
   }
 
-  get rows(): { row1: CompositionRow; row2: CompositionRow; row3: CompositionRow } {
-    const items: CompositionItem[] = (this.media ?? []).map((value, index) => ({
-      value,
-      index,
-    }));
+get rows(): { row1: CompositionRow; row2: CompositionRow; row3: CompositionRow } {
+  const items: CompositionItem[] = (this.media ?? []).map((value, index) => ({
+    value,
+    index,
+  }));
 
-    const row1 = items.slice(0, 1);
+  /* ✅ exception spécifique au projet omd :
+     3 visuels => 3 lignes de 1 visuel */
+  if (this.token === 'omd') {
+    return {
+      row1: items.slice(0, 1),
+      row2: items.slice(1, 2),
+      row3: items.slice(2, 3),
+    };
+  }
 
-    if (this.composition === 1) {
-      const row2 = items.slice(1, 3);
-      const row3 = items.slice(3, 4);
-      return { row1, row2, row3 };
-    }
+  const row1 = items.slice(0, 1);
 
-    if (this.composition === 2) {
-      const row2 = items.slice(1, 3);
-      return { row1, row2, row3: [] };
-    }
-
-    if (this.composition === 3) {
-      const row2 = items.slice(1, 4);
-      const row3 = items.slice(4, 5);
-      return { row1, row2, row3 };
-    }
-
-    const row2 = items.slice(1, 4);
-    const row3 = items.slice(4, 6);
+  if (this.composition === 1) {
+    const row2 = items.slice(1, 3);
+    const row3 = items.slice(3, 4);
     return { row1, row2, row3 };
   }
+
+  if (this.composition === 2) {
+    const row2 = items.slice(1, 3);
+    return { row1, row2, row3: [] };
+  }
+
+  if (this.composition === 3) {
+    const row2 = items.slice(1, 4);
+    const row3 = items.slice(4, 5);
+    return { row1, row2, row3 };
+  }
+
+  const row2 = items.slice(1, 4);
+  const row3 = items.slice(4, 6);
+  return { row1, row2, row3 };
+}
 }

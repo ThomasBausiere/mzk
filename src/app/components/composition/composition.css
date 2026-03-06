@@ -136,6 +136,15 @@
   .composition--2 .composition__row--2{
     grid-template-columns: repeat(2, 1fr);
   }
+    .composition[data-token="omd"] .composition__row--2 {
+    grid-template-columns: 1fr;
+    
+  }
+
+   .composition[data-token="omd"]  .composition__media{
+    aspect-ratio: 16 / 9;
+  }
+
 
   .composition--3 .composition__row--2,
   .composition--4 .composition__row--2{
