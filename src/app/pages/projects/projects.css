@@ -12,13 +12,13 @@
 
 .projects-page__title{
   color: var(--accent);
-  font-size: 2.4rem;
-  font-weight: 500;
   letter-spacing: 0.2px;
 }
 
 @media (min-width: 1024px){
-  .projects-page__title{ font-size: 3.25rem; }
+  /* .projects-page__title{ 
+    font-size: 3.25rem; 
+  } */
     .projects-page__filters{display: flex;}
 }
 
@@ -26,7 +26,6 @@
   margin-top: 0.9rem;
   color: var(--text);
   line-height: 1.7;
-  font-size: 0.95rem;
 }
 
 /* filters */
@@ -45,7 +44,6 @@
   border: 0;
   background: transparent;
   color: var(--text);
-  font: inherit;
   padding: 0.55rem 1.25rem;
   border-radius: 999px;
   cursor: pointer;

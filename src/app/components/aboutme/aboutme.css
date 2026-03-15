@@ -26,9 +26,6 @@
 .aboutme__title {
   width: 100%;
   color: var(--accent);
-  font-family: var(--font-family-base);
-  font-weight: 100;
-
 }
 
 .aboutme__subtitle {

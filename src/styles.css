@@ -2,7 +2,19 @@
    DESIGN SYSTEM — styles.css (source de vérité)
    Basé sur about_mobile.png + about_desktop.png
    ========================================================= */
+@font-face {
+  font-family: 'ArchivoBlack';
+  src: url('/assets/fonts/ArchivoBlack.ttf') format('truetype');
+  font-style: normal;
+  font-display: swap;
+}
 
+@font-face {
+  font-family: 'Questrial';
+  src: url('/assets/fonts/Questrial.ttf') format('opentype');
+  font-style: normal;
+  font-display: swap;
+}
 /* =========================
    RESET + BASE
    ========================= */
@@ -20,7 +32,6 @@ font-size: var(--body-size)
 }
 
 html, body {
-  font-family: var(--font-family-base);
   color: var(--text);
   background-color: var(--page-bg);
   background-image:
@@ -45,15 +56,15 @@ html, body {
 
   .title{
   font-size: var(--title-size-mobile);
-  font-family: var(--font-family-base);
-  font-weight: 100;
+  font-family: var(--font-family-titre);
+  font-weight: 900;
   }
 
 
   .txtbtn{
     font-size: var(--btn-size-mobile);
     font-family: var(--font-family-base);
-    font-weight: 200;
+    font-weight: 900;
   }
 
 @media(min-width:1024px){
@@ -63,11 +74,10 @@ html, body {
     }
       .title{
     font-size: var(--title-size);
-    font-weight: 100;
+
   }
     .txtbtn{
     font-size: var(--btn-size);
-    font-weight: 200;
   }
 
   }
@@ -83,8 +93,12 @@ html, body {
   --bp-lg: 1024px;
 
   /* Typo */
-  --font-family-base: "nexa", sans-serif;
-  --font-family-display: "nexa", sans-serif;
+  /* --font-family-base: "nexa", sans-serif; */
+  --font-family-base: "Questrial", sans-serif;
+  --font-family-titre: "ArchivoBlack", sans-serif;
+
+  /* --font-family-display: "nexa", sans-serif; */
+
 
   --font-size-xs: 0.82rem;
   --font-size-sm: 0.92rem;
@@ -199,7 +213,7 @@ html, body {
 
 .h1 { 
   font-size: var(--title-size);
-font-family: var(--font-family-base);
+font-family: var(--font-family-titre);
 font-weight: 100; }
 .h2 { font-size: var(--font-size-xl); }
 .h3 { font-size: var(--font-size-lg); }
@@ -247,7 +261,7 @@ font-weight: 100; }
 .center { text-align: center; }
 .stack > * + * { margin-top: var(--space-4); }
 
-.h-display { font-family: var(--font-family-display); line-height: var(--line-height-tight); }
+/* .h-display { font-family: var(--font-family-display); line-height: var(--line-height-tight); } */
 .h1 { font-size: var(--font-size-2xl); }
 .h2 { font-size: var(--font-size-xl); }
 @media (min-width: 768px) {
@@ -485,7 +499,7 @@ textarea:focus {
 }
 
 .trust-card__name {
-  font-family: var(--font-family-display);
+  /* font-family: var(--font-family-display); */
   font-size: var(--font-size-md);
   line-height: var(--line-height-tight);
 }
@@ -549,7 +563,7 @@ textarea:focus {
   }
   h1{
       font-size: var(--title-size);
-  font-family: var(--font-family-base);
+  font-family: var(--font-family-titre);
   font-weight: 100;
   }
 }

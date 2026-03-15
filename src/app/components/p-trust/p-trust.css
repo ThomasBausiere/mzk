@@ -158,6 +158,8 @@
   font-weight: 600;
   font-size: 1rem;
   color: var(--text);
+  font-family: var(--font-family-titre);
+
 }
 .p-trust__ring-inner {
   width: 100%;
@@ -171,6 +173,8 @@
   margin-top: 0.25rem;
   color: var(--accent);
   font-size: 0.82rem;
+  font-family: var(--font-family-titre);
+
 }
 
 .p-trust__text{
@@ -179,6 +183,7 @@
   font-size: 12px;
   line-height: 1.55;
   text-align: left;
+  font-family: var(--font-family-base);
 }
 
 

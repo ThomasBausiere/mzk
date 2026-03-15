@@ -15,9 +15,8 @@
   margin: 0 auto;
 }
 
-.projects-carousel__title{
-  /* tu gères tes sizes via variables globales, mais je laisse la classe ici */
-}
+
+
 
 .projects-carousel__subtitle{
   margin-top: 0.9rem;

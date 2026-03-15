@@ -5,13 +5,13 @@
     </a>
 
     <div class="nav__links">
-      <a class="nav__link txtbtn" routerLink="/home" routerLinkActive="is-active" (click)="onNavClick()">Accueil</a>
-      <a class="nav__link txtbtn" routerLink="/projects" routerLinkActive="is-active"(click)="onNavClick()">Projets</a>
-      <a class="nav__link txtbtn" routerLink="/about" routerLinkActive="is-active"(click)="onNavClick()">À propos</a>
+      <a class="nav__link texts" routerLink="/home" routerLinkActive="is-active" (click)="onNavClick()">Accueil</a>
+      <a class="nav__link texts" routerLink="/projects" routerLinkActive="is-active"(click)="onNavClick()">Projets</a>
+      <a class="nav__link texts" routerLink="/about" routerLinkActive="is-active"(click)="onNavClick()">À propos</a>
     </div>
 
-    <a class="nav__cta btn btn--primary" [href]="mailtoHref" >
-      Contactez moi
+    <a class="nav__cta btn txtbtn btn--primary" [href]="mailtoHref" >
+      Contactez-moi
     </a>
 
     <button class="nav__burger" type="button" (click)="toggle()"
