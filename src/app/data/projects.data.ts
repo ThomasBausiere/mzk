@@ -83,7 +83,7 @@ export const PROJECTS: Project[] = [
     header: 'header.mp4',
 
     title: 'Application mobile : Institut de Genech',
-    description: 'Dans le cadre d’un projet scolaire, j’ai conçu l’UI/UX d’une application pensée pour répondre aux besoins des élèves. Elle leur permet d’accéder à leur emploi du temps et de le gérer en y ajoutant des éléments personnalisés. L’application permet également de suivre l’actualité de l’établissement, de rechercher des stages ou encore d’échanger par e-mail.',
+    description: 'Dans le cadre d’un projet personnel, j’ai conçu l’identité visuelle et le design d’une application pensée pour les élèves. Ils peuvent consulter et gérer leur emploi du temps, suivre l’actualité de l’établissement, rechercher des stages ou échanger par e-mail. Un projet mêlant créativité graphique et expérience utilisateur.',
     // comp 2 = 3 medias
     compositionMedia: [
       '01.gif', // 01
